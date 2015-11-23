@@ -14,20 +14,30 @@ var user1 = new User({
   password:     "password"
 })
 
-user1.save(function(err, user) {
- if (err) return console.log(err);
- console.log("User saved! ", user);
+// user1.save(function(err, user) {
+//  if (err) return console.log(err);
+//  console.log("User saved! ", user);
+// })
+
+var response1 = new Response({
+  user: user1,
+  rating: 2
 })
+
+// response1.save(function(err, response) {
+//   if (err) return console.log(err);
+//   console.log("Response saved! ", response);
+// })
 
 var poll1 = new Poll({
   question:  "How is the vibe in team _moji right now?",
   responses: [response1]
 })
 
-poll1.save(function(err, poll) {
-  if (err) return console.log(err);
-  console.log("Poll saved! ", poll);
-})
+// poll1.save(function(err, poll) {
+//   if (err) return console.log(err);
+//   console.log("Poll saved! ", poll);
+// })
 
 var group1 = new Group({
   name:        "_moji",
@@ -42,15 +52,7 @@ group1.save(function(err, group) {
   console.log("Group saved! ", group);
 })
 
-var response1 = new Response({
-  user: user1,
-  rating: 2
-})
 
-response1.save(function(err, response) {
-  if (err) return console.log(err);
-  console.log("Response saved! ", response);
-})
 
 
 

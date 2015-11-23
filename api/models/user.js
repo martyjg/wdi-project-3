@@ -6,6 +6,8 @@ var userSchema = mongoose.Schema({
   email:        { type: String, required: true },
   password:     { type: String, required: true },
   image:        String,
-  date_created: Date
-
+  date_created: Date,
+  bio:          String
 })
+
+module.exports = mongoose.model('User', userSchema);

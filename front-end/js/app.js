@@ -49,12 +49,12 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  $("logged-out").hide();
+  $("logged-out form-section").hide();
   $("logged-in").show();
 }
 
 function loggedOutState() {
-  $("logged-out").show();
+  $("logged-out form-section").show();
   $("logged-in").hide();
 }
 

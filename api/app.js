@@ -34,11 +34,13 @@ app.use(methodOverride(function(req, res){
 
 app.use(morgan('dev')); 
 app.use(cookieParser());
-app.use(bodyParser()); 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
+// app.use(cors());
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
-app.use(passport.session()); 
+// app.use(passport.session()); 
 app.use(flash());
 
 app.use('/api', expressJWT({ secret: secret })
@@ -53,8 +55,8 @@ app.use('/api', expressJWT({ secret: secret })
 
 // Express settings
 
-app.set('view engine', 'ejs');
-app.set("views", __dirname + "/views");
+// app.set('view engine', 'ejs');
+// app.set("views", __dirname + "/views");
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
@@ -64,8 +66,8 @@ app.use(function (err, req, res, next) {
 });
 
 
-var routes = require(__dirname + "/config/routes");
-app.use(routes);
+var routes = require("./config/routes");
+app.use("/api", routes);
 
 app.listen(3000);
 console.log("Heard loud and clear")

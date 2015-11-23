@@ -14,7 +14,7 @@ module.exports = function(passport) {
   });
 
 
-  passport.use('local-register', new LocalStrategy({
+  passport.use('local-signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
@@ -26,11 +26,13 @@ module.exports = function(passport) {
 
       // ALREADY A USER WITH THIS USERNAME
       if (user) {
-        return done(null, false, req.flash('errorMessage', 'This username has been taken!'));
+        return done(null, false, { message: "please choose another username."});
       } else {
 
         var newUser            = new User();
         newUser.local.username = username;
+        newUser.local.email    = req.body.email;
+        newUser.local.image    = req.body.image;
         newUser.local.password = User.encrypt(password);
 
         newUser.save(function(err, user) {

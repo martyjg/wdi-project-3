@@ -27,12 +27,35 @@ function showPage() {
 function submitForm() {
   event.preventDefault();
 
+  // $.ajax({
+  //   url:'http://localhost:3000/api/register',
+  //   type:'post',
+  //   data: { user: {
+  //     "username": $("input#username").val(),
+  //     "password": $("input#password").val(),
+  //     "email": $("input#email").val()
+  //   }}
+  // }).done(function(data) {
+  //   addUser(data);
+  //   toggleUserForm();
+  //   $("input#username").val(null),
+  //   $("input#password").val(null),
+  //   $("input#email").val(null)
+  // });
+
+
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
+  console.log(data);
+
   return ajaxRequest(method, url, data, authenticationSuccessful);
 }
+
+//method = "post", action = "/register"
+//method is "post", correct
+//url is "http://localhost:3000/api/register", correct
 
 function logout() {
   event.preventDefault();

@@ -12,28 +12,34 @@ router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
 // USER ROUTE HANDLERS - (SHOW, EDIT, UPDATE, DELETE. NOT CURRENTLY USING INDEX)
-// router.route('/users/:id')
-//   .get(usersController.userShow)
-//   .patch(usersController.usersUpdate)
-//   .delete(usersController.usersDelete)
+router.route('/users/:id')
+  .get(usersController.userShow)
+  .patch(usersController.usersUpdate)
+  .delete(usersController.usersDelete)
 
-// router.route('/users/:id/edit')
-//   .get(usersController.usersEdit)
+router.route('/users/:id/edit')
+  .get(usersController.usersEdit)
 
-// // GROUP ROUTE HANDLERS 
-// router.route('/groups')
-//   .post(groupsController.groupsCreate)
+// GROUP ROUTE HANDLERS 
+router.route('/groups')
+  .post(groupsController.groupsCreate)
 
-// router.route('/groups/:id')
-//   .get(groupsController.groupsShow)
-//   .patch(groupsController.groupsUpdate)
-//   .delete(groupsController.groupsDelete)
+router.route('/groups/:id')
+  .get(groupsController.groupsShow)
+  .patch(groupsController.groupsUpdate)
+  .delete(groupsController.groupsDelete)
 
-// router.route('/groups/new')
-//   .get(groupsController.groupsNew)
+// POLL ROUTE HANDLERS
+router.route('/polls')
+  .post(pollsController.pollsCreate)
 
-// router.route('/groups/:id/edit')
-//   .get(groupsController.groupsEdit)
+router.route('/polls/:id')
+  .get(pollsController.pollsShow)
 
+// RESPONSE ROUTE HANDLER
+router.route('/responses')
+  .post(responsesController.responsesCreate)
+
+  
 module.exports = router
 

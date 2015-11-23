@@ -3,10 +3,15 @@ var router            = express.Router();
 var passport          = require("passport");
 var usersController   = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
+var groupsController = require('../controllers/groupsController');
+var responsesController = require('../controllers/responsesController');
 
+
+// AUTHENTICATION ROUTE HANDLERS - (REGISTER ACTS AS USER-NEW & CREATE)
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
+// USER ROUTE HANDLERS - (SHOW, EDIT, UPDATE, DELETE. NOT CURRENTLY USING INDEX)
 router.route('/users/:id')
   .get(usersController.userShow)
   .patch(usersController.usersUpdate)
@@ -15,8 +20,8 @@ router.route('/users/:id')
 router.route('/users/:id/edit')
   .get(usersController.usersEdit)
 
+// GROUP ROUTE HANDLERS 
 router.route('/groups')
-  .get(groupsController.groupsIndex)
   .post(groupsController.groupsCreate)
 
 router.route('/groups/:id')
@@ -27,7 +32,7 @@ router.route('/groups/:id')
 router.route('/groups/new')
   .get(groupsController.groupsNew)
 
-router.route('/users/:id/edit')
+router.route('/groups/:id/edit')
   .get(groupsController.groupsEdit)
 
 module.exports = router

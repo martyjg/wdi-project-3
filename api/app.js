@@ -13,12 +13,14 @@ var methodOverride = require('method-override');
 var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
+var cors           = require('cors');
+
+var app            = express();
 
 var config         = require('./config/config');
 var User           = require('./models/user');
 var secret         = require('./config/config').secret;
 
-var app            = express();
 
 // Setup the Database
 

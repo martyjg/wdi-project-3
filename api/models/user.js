@@ -10,4 +10,8 @@ var userSchema = mongoose.Schema({
   bio:          String
 })
 
+User.statics.encrypt = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
 module.exports = mongoose.model('User', userSchema);

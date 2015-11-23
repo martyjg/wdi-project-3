@@ -37,6 +37,7 @@ function usersDelete(req, res){
   });
 }
 
+
 module.exports = {
   usersIndex:  usersIndex,
   usersShow:   usersShow,

@@ -6,6 +6,7 @@ var usersController   = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
 var groupsController = require('../controllers/groupsController');
 var responsesController = require('../controllers/responsesController');
+var pollsController = require('../controllers/pollsController');
 
 // AUTHENTICATION ROUTE HANDLERS - (REGISTER ACTS AS USER-NEW & CREATE)
 router.post('/login', authenticationsController.login);
@@ -13,12 +14,12 @@ router.post('/register', authenticationsController.register);
 
 // USER ROUTE HANDLERS - (SHOW, EDIT, UPDATE, DELETE. NOT CURRENTLY USING INDEX)
 router.route('/users/:id')
-  .get(usersController.userShow)
+  .get(usersController.usersShow)
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
 router.route('/users/:id/edit')
-  .get(usersController.usersEdit)
+  // .get(usersController.usersEdit)
 
 // GROUP ROUTE HANDLERS 
 router.route('/groups')

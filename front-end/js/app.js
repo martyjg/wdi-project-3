@@ -4,12 +4,13 @@ function init() {
   $("form").on("submit", submitForm);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
+  $("#register").hide();
   hideErrors();
   checkLoginState();
 }
 
 function checkLoginState() {
-  if (localStorage.getItem("token")) {
+  if (getToken()) {
     return loggedInState();
   } else {
     return loggedOutState();
@@ -19,30 +20,15 @@ function checkLoginState() {
 function showPage() {
   event.preventDefault();
   var linkClass = $(this).attr("class").split("-")[0];
-  $("section").hide();
-  hideErrors();
+  console.log(linkClass);  
+  $('#register').hide();
+  $('#login').hide();
+
   return $("#" + linkClass).show();
 }
 
 function submitForm() {
   event.preventDefault();
-
-  // $.ajax({
-  //   url:'http://localhost:3000/api/register',
-  //   type:'post',
-  //   data: { user: {
-  //     "username": $("input#username").val(),
-  //     "password": $("input#password").val(),
-  //     "email": $("input#email").val()
-  //   }}
-  // }).done(function(data) {
-  //   addUser(data);
-  //   toggleUserForm();
-  //   $("input#username").val(null),
-  //   $("input#password").val(null),
-  //   $("input#email").val(null)
-  // });
-
 
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
@@ -53,9 +39,6 @@ function submitForm() {
   return ajaxRequest(method, url, data, authenticationSuccessful);
 }
 
-//method = "post", action = "/register"
-//method is "post", correct
-//url is "http://localhost:3000/api/register", correct
 
 function logout() {
   event.preventDefault();
@@ -72,20 +55,29 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  $("logged-out form-section").hide();
-  $("logged-in").show();
+  console.log("yeeeeah boi")
+  $(".logged-out, .form-section").hide();
+  $(".logged-in").show();
 }
 
 function loggedOutState() {
-  $("logged-out form-section").show();
-  $("logged-in").hide();
+  console.log("nooooooo boi")
+
+  $(".logged-out, .form-section").show();
+  $(".logged-in").hide();
 }
 
 function authenticationSuccessful(data) {
-  if (data.token) {
-    localStorage.setItem("token", token);
-  } 
+  if (data.token) setToken(data.token);
   return checkLoginState();
+}
+
+function setToken(token) {
+  return localStorage.setItem("token", token);
+}
+
+function getToken() {
+  return localStorage.getItem('token');
 }
 
 function setRequestHeader(xhr, settings) {

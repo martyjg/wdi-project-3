@@ -79,6 +79,6 @@ function ajaxRequest(method, url, data, callback) {
   }).done(function(data) {
     if (callback) return callback(data);    
   }).fail(function(data) {
-    displayErrors(data.responseJSON.message);
+    displayErrors();
   });
 }

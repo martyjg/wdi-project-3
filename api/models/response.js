@@ -3,7 +3,8 @@ var bcrypt   = require("bcrypt-nodejs");
 
 var responseSchema = mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: "User" },
-  rating: Number
+  rating: Number,
+  comment: String
 })
 
 module.exports = mongoose.model('Response', responseSchema);

@@ -1,9 +1,7 @@
-var passport = require('passport');
+var passport = require("passport");
 var User     = require('../models/user');
 var secret   = require('../config/config').secret 
 var jwt      = require('jsonwebtoken');
-
-//POST/REGISTER
 
 function register(req, res, next) {
   var localStrategy = passport.authenticate('local-signup', function(err, user, info) {
@@ -29,7 +27,7 @@ function register(req, res, next) {
 
 function login(req, res, next) {
   User.findOne({
-    "local.username": req.body.username
+    "local.email": req.body.email
   }, function(err, user) {
     if (err) return res.status(500).json(err);
     if (!user) return res.status(403).json({ message: 'No user found.' });

@@ -7,8 +7,8 @@ var groupsController = require('../controllers/groupsController');
 var responsesController = require('../controllers/responsesController');
 
 // AUTHENTICATION ROUTE HANDLERS - (REGISTER ACTS AS USER-NEW & CREATE)
-router.post('/login', authenticationsController.login);
-router.post('/register', authenticationsController.register);
+router.post('/api/login', authenticationsController.login);
+router.post('/api/register', authenticationsController.register);
 
 // USER ROUTE HANDLERS - (SHOW, EDIT, UPDATE, DELETE. NOT CURRENTLY USING INDEX)
 // router.route('/users/:id')

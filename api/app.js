@@ -12,6 +12,7 @@ var session        = require('express-session');
 var methodOverride = require('method-override'); 
 var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
+var path           = require('path');
 
 var config         = require('./config/config');
 var User           = require('./models/user');
@@ -23,6 +24,7 @@ var app            = express();
 
 mongoose.connect(config.database);
 
+require('./config/passport')(passport);
 
 app.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -36,7 +38,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
-// app.use(cors());
+app.use(cors());
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
@@ -51,12 +53,6 @@ app.use('/api', expressJWT({ secret: secret })
     ]
   })
 );
-
-
-// Express settings
-
-// app.set('view engine', 'ejs');
-// app.set("views", __dirname + "/views");
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

@@ -10,30 +10,15 @@ function usersIndex(req, res) {
 
 function usersShow(req, res){
   console.log("linked to controller");
-  User.findById(req.params.id, function(err, user){
+  User.findById(req.params.id).populate("groups").exec(function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
 
-    Group.find({}, function(err, allGroups) {
-      var userGroups = []; 
-      for (var i = 0; i < allGroups.length; i++) {
-        console.log(allGroups[i].users);
-
-        // for (var j = 0; j < allGroups[i].users.length; i++) {
-        //   if (allGroups[i].users[j]._id === req.params.id) {
-
-        //     userGroups.push(allGroups[i]);
-        //     if (err) return res.status(404).json({message: 'Something went wrong.'});
-        //   }
-        //   res.status(200).json({ user: user, groups: userGroups });
-        // }
-      }
-    });
-    
+    res.status(200).json(user);
   });
 }
 
 function usersUpdate(req, res){
-  User.findById(req.params.id,  function(err, user) {
+  User.findById(req.params.id, function(err, user) {
     if (err) return res.status(500).json({message: "Something went wrong!"});
     if (!user) return res.status(404).json({message: 'No user found.'});
 

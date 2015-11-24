@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
 var bcrypt   = require("bcrypt-nodejs");
 
-var userSchema = mongoose.Schema({
+var userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   image:    { type: String },
   email:    { type: String, unique: true, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  groups: [ { type: mongoose.Schema.ObjectId, ref: 'Group'} ]
 })
 
 userSchema.statics.encrypt = function(password) {

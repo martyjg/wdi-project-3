@@ -30,6 +30,9 @@ router.route('/groups/:id')
   .patch(groupsController.groupsUpdate)
 //   .delete(groupsController.groupsDelete)
 
+router.route('/groups/:id/adduser')
+  .put(groupsController.groupsAddUser)
+
 // // POLL ROUTE HANDLERS
 // router.route('/polls')
 //   .post(pollsController.pollsCreate)

@@ -20,7 +20,6 @@ function checkLoginState() {
 function showPage() {
   event.preventDefault();
   var linkClass = $(this).attr("class").split("-")[0];
-  console.log(linkClass);  
   $('#register').hide();
   $('#login').hide();
 
@@ -33,8 +32,6 @@ function submitForm() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-
-  console.log(data);
 
   return ajaxRequest(method, url, data, authenticationSuccessful);
 }
@@ -55,14 +52,11 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  console.log("yeeeeah boi")
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
 }
 
 function loggedOutState() {
-  console.log("nooooooo boi")
-
   $(".logged-out, .form-section").show();
   $(".logged-in").hide();
 }

@@ -42,12 +42,9 @@ function showGroupPage() {
   return ajaxRequest(method, url, null, displayPolls);
 }
 
-
-
 function createNewGroup() {
   event.preventDefault();
   console.log(this);
-
 }
 
 function displayPolls(req, res) {
@@ -59,11 +56,11 @@ function displayPolls(req, res) {
 
 function submitPoll() {
   event.preventDefault();
-
-  var method = "post";
+  console.log(this);
+  var method = $(this).attr("method");
+  var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
   console.log(data);
-  var url    = "http://localhost:3000/api/polls";
 
   return ajaxRequest(method, url, data);
 }

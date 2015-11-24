@@ -3,7 +3,7 @@ $(init);
 function init() {
   $("#login, #register").on("submit", submitForm);
   $("#new-group").on("submit", createNewGroup);
-  $("#poll-form").on("submit", submitPoll);
+  $("#newpoll").on("submit", submitPoll);
 
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);

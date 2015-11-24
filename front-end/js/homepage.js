@@ -1,4 +1,6 @@
 function showHomepage(data) {
+  $(".homepage").show();
+
   var id = data.user._id;
   var method = "get";
   var url = "http://localhost:3000/api/users/" + id;
@@ -43,6 +45,12 @@ function showGroupPage(id) {
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
+}
+
+function createNewGroup() {
+  event.preventDefault();
+  console.log(this);
+  
 }
 
 function displayPolls(res) {

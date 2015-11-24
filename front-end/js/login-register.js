@@ -2,9 +2,11 @@ $(init);
 
 function init() {
   $("form").on("submit", submitForm);
+  $("#new-group").on("submit", createNewGroup);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
+  $(".homepage").hide();
   hideErrors();
   checkLoginState();
 }
@@ -33,7 +35,7 @@ function submitForm() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequest(method, url, data, authenticationSuccessful);
+  return ajaxRequestForLoginRegister(method, url, data, authenticationSuccessful);
 }
 
 
@@ -59,6 +61,7 @@ function loggedInState() {
 function loggedOutState() {
   $(".logged-out, .form-section").show();
   $(".logged-in").hide();
+  $(".homepage").hide();
 }
 
 function authenticationSuccessful(data) {
@@ -80,7 +83,7 @@ function setRequestHeader(xhr, settings) {
   if (token) return xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
 
-function ajaxRequest(method, url, data, callback) {
+function ajaxRequestForLoginRegister(method, url, data, callback) {
   return $.ajax({
     method: method,
     url: url,

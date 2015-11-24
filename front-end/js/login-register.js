@@ -3,6 +3,8 @@ $(init);
 function init() {
   $("#login, #register").on("submit", submitForm);
   $("#new-group").on("submit", createNewGroup);
+  $("#poll-form").on("submit", submitPoll);
+
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
@@ -35,7 +37,7 @@ function submitForm() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-
+  console.log(data);
   return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
 

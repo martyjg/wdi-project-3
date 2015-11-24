@@ -13,10 +13,6 @@ function displayGroups(res) {
   for (var i=0; i < groups.length; i++) {
     var id = groups[i]._id;
     $('.homepage').append(
-      // "<div class='col s12 m6 l4'><div class='card'><div class='card-content'>" + groups[i].description + "</div><div class='card-action'><a href='/' id='" + id + "'>view group</a></div></div></div>"
-
-      // "<div class='card-image waves-effect waves-block waves-light col s12 m6 l4'><img class='activator' src='images/office.jpg'></div><div class='card-content'>< span class='card-title activator grey-text text-darken-4'>" + groups[i].name + "<i class='material-icons right'>more_vert</i></span><p><a href='http://localhost:3000/api/groups/'" + groups[i]._id + ">View Group</a></p></div><div class='card-reveal'><span class='card-title grey-text text-darken-4'>" + groups[i].name + "<i class='material-icons right'>close</i></span><p>" + groups[i].description + "</p></div>"
-
       '<div class="col s12 m6 l4">' +
       '<div class="card">' +
           '<div class="card-image waves-effect waves-block waves-light">' +
@@ -32,9 +28,6 @@ function displayGroups(res) {
           '</div>' +
         '</div>' +
       '</div>'
-
-
-
     );
     $("#" + id).on("click", showGroupPage);
   }
@@ -44,11 +37,12 @@ function displayGroups(res) {
 function showGroupPage() {
   event.preventDefault();
   id = $(this).attr('id');
-  console.log("this is the id" + id)
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
 }
+
+
 
 function createNewGroup() {
   event.preventDefault();
@@ -56,10 +50,22 @@ function createNewGroup() {
 
 }
 
-function displayPolls(res) {
+function displayPolls(req, res) {
   $(".homepage").hide();
   $(".group-page").show();
   $("#poll-form").show();
+  $("#group-id").val(req._id);
+}
+
+function submitPoll() {
+  event.preventDefault();
+
+  var method = "post";
+  var data   = $(this).serialize();
+  console.log(data);
+  var url    = "http://localhost:3000/api/polls";
+
+  return ajaxRequest(method, url, data);
 }
 
 function ajaxRequest(method, url, data, callback) {
@@ -69,6 +75,7 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
+    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

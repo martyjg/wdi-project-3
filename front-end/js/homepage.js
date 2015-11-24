@@ -21,13 +21,11 @@ function displayGroups(res) {
 
 function showGroupPage(id) {
   event.preventDefault();
-  console.log(id);
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
 }
 
 function displayPolls(res) {
-  console.log("jessica christ we made it this far")
 }
 

@@ -55,25 +55,6 @@ function groupsAddUser(req, res){
       res.status(204).json({ message: "User was added to the group" }); 
     });
   });
-
-  // User.findOne({ username: req.body.username }, function(err, user){
-  //   if (err) return res.status(500).json(err);
-  //   if (!user) return res.status(404).json(err);
-
-  //   Group.findByIdAndUpdate({ _id: id }, { $addToSet: { users: user._id } }, function(err, group){
-  //     if (err) return res.status(500).json(err);
-  //     if (!group) return res.status(404).json(err);
-
-  //     // Reverse is optional
-  //     // User.findByIdAndUpdate(user._id, { $addToSet: { groups: group._id } }, function(err, user) {
-  //     //   if (err) return res.status(500).json(err);
-  //     //   if (!user) return res.status(404).json(err);        
-  //     // })
-
-  //     res.status(204).json({ message: "User was added" }); 
-  //   });
-
-  // })
 }
 
 

@@ -14,7 +14,7 @@ var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
 var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
-var port           = process.env.PORT || 3000; // added this in socket
+var port           = process.env.PORT || 8000; // added this in socket
 var router         = express.Router(); // added this in socket
 var app            = express();
 var socketio       = require('socket.io');
@@ -46,7 +46,7 @@ app.use(cors());
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
-// app.use(passport.session()); 
+app.use(passport.session()); 
 app.use(flash());
 
 app.use('/api', expressJWT({ secret: secret })
@@ -89,7 +89,7 @@ io.sockets.on('connection', function(socket){
   })
 });
 
-// The below is everything that is existing.
+// The below is everything that was previously there before I dived in.
 
 var routes = require("./config/routes");
 app.use("/api", routes);

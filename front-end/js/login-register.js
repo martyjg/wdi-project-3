@@ -55,6 +55,7 @@ function displayErrors(data) {
 function loggedInState() {
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
+  $(".new-poll-form").show();
 }
 
 function loggedOutState() {

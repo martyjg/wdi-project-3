@@ -1,7 +1,7 @@
 $(init);
 
 function init() {
-  $("form").on("submit", submitForm);
+  $("#login, #register").on("submit", submitForm);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
@@ -21,7 +21,6 @@ function checkLoginState() {
 function showPage() {
   event.preventDefault();
   var linkClass = $(this).attr("class").split("-")[0];
-  console.log(linkClass);  
   $('#register').hide();
   $('#login').hide();
 
@@ -35,9 +34,7 @@ function submitForm() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  console.log(data);
-
-  return ajaxRequest(method, url, data, authenticationSuccessful);
+  return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
 
 
@@ -56,14 +53,11 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  console.log("yeeeeah boi")
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
 }
 
 function loggedOutState() {
-  console.log("nooooooo boi")
-
   $(".logged-out, .form-section").show();
   $(".logged-in").hide();
 }
@@ -96,7 +90,7 @@ function setRequestHeader(xhr, settings) {
   if (token) return xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
 
-function ajaxRequest(method, url, data, callback) {
+function ajaxRequestforLoginRegister(method, url, data, callback) {
   return $.ajax({
     method: method,
     url: url,

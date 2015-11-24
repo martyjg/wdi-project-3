@@ -13,10 +13,11 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-var server         = require("http").createServer(app); // added this in socket
+var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
 var port           = process.env.PORT || 3000; // added this in socket
 var router         = express.Router(); // added this in socket
 var app            = express();
+var socketio       = require('socket.io');
 
 var config         = require('./config/config');
 var User           = require('./models/user');
@@ -78,7 +79,7 @@ console.log("SERVER STARTED ON " + port);
 
 var io = require("socket.io")(server);
 
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
   console.log('a user connected');
   socket.on("disconnect", function() {
     console.log("user disconnected");

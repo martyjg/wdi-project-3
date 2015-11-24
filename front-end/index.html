@@ -9,6 +9,7 @@
   <script type="text/javascript" src="./js/socket.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body> 
@@ -23,84 +24,94 @@
     </div>
   </nav>
 
+  <div class="container">
 
-  <div class="hide alert alert-danger" role="alert"></div>
+    <div class="hide alert alert-danger" role="alert"></div>
 
 
-  <div class="row form-section">
-    <form class="col s12" id="register" method="post" action="/register">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="username" name="username" type="text">
-          <label for="username">Username</label>
+    <div class="row form-section">
+      <form class="col s12" id="register" method="post" action="/register">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" name="username" type="text">
+            <label for="username">Username</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" name="email" type="text">
-          <label for="email">Email</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" name="email" type="text">
+            <label for="email">Email</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" name="password" type="password">
-          <label for="password">Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" name="password" type="password">
+            <label for="password">Password</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="submit" value="register" class="btn" id="submit">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" value="register" class="btn" id="submit">
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
 <!--     <div class="row form-section">
     <form action="/upload" enctype="multipart/form-data"> 
       <input type="file" name="file" id="file" />
       <button type="submit">upload</button> 
     </form> 
-    </div> -->
+  </div> -->
 
-    <form class="col s12" id="login" method="post" action="/login">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" name="email" type="text">
-          <label for="email">Email</label>
-        </div>
+  <form class="col s12" id="login" method="post" action="/login">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" name="email" type="text">
+        <label for="email">Email</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" name="password" type="password">
-          <label for="password">Password</label>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" name="password" type="password">
+        <label for="password">Password</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="submit" value="login" class="btn" id="submit">
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="submit" value="login" class="btn" id="submit">
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
 <!-- USER SHOW PAGE -->
 
 
 <div class="row homepage">
-<div class="col s12 m6 l4">
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="http://materializecss.com/images/office.jpg">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Create New Group<i class="material-icons right">more_vert</i></span>
-<!--       <p><a href="#">This is a link</a></p> -->
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Creating New Group<i class="material-icons right">close</i></span>
-      <p>Possibly a form will go here where you can fill in name and description for your own group.</p>
+  <div class="col s12 m6 l4">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://materializecss.com/images/office.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Create New Group<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>
+        <!--       <p><a href="#">This is a link</a></p> -->
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Creating New Group<i class="material-icons right"><i class="fa fa-arrow-down"></i></i></span>
+        <p>
+        <form class="col s12" id="new-group" method="post" action="/groups">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" name="email" type="text">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        </form>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -119,6 +130,6 @@
 
 
 
-
+</div>
 </body>
 </html>

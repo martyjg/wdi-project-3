@@ -21,11 +21,11 @@ function displayGroups(res) {
             '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
           '</div>' +
           '<div class="card-content">' +
-            '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right">more_vert</i></span>' +
+            '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
             '<p><a href="/" id="' + id + '"></a></p>' +
           '</div>' +
           '<div class="card-reveal">' +
-            '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right">close</i></span>' +
+            '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
             '<p>' + groups[i].description + '</p>' +
           '</div>' +
         '</div>' +

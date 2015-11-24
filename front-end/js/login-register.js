@@ -69,6 +69,7 @@ function loggedOutState() {
 
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
+  showHomepage(data);
   return checkLoginState();
 }
 
@@ -91,8 +92,8 @@ function ajaxRequest(method, url, data, callback) {
     url: url,
     data: data,
     beforeSend: setRequestHeader
-  }).done(function(data) {
-    if (callback) return callback(data);    
+  }).done(function(res) {
+    if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();
   });

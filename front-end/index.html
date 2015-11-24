@@ -4,9 +4,9 @@
   <title>VibeRate</title>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
   <script type="text/javascript" src="./js/socket.js"></script>
-  <script type="text/javascript" src="./js/homepage.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -54,6 +54,13 @@
       </div>
     </form>
 
+    <div class="row form-section">
+    <form action="/upload" enctype="multipart/form-data"> 
+      <input type="file" name="file" id="file" />
+      <button type="submit">upload</button> 
+    </form> 
+    </div>
+
     <form class="col s12" id="login" method="post" action="/login">
       <div class="row">
         <div class="input-field col s12">
@@ -75,16 +82,22 @@
     </form>
   </div>
 
+<!-- USER SHOW PAGE -->
+
+<div class="row homepage">
+</div>
+
+
 
 <!-- THIS IS THE SOCKET GROUP FEED -->
-  <div class="socket">
+<!--   <div class="socket">
     <ul id="messages"></ul>
     <form action="">
       <input type="radio" name="cool" value="cool" checked>😎
       <input type="radio" name="turd" value="rubbish">💩
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-  </div>
+  </div> -->
 
 
 

@@ -13,11 +13,10 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
+
 var port           = process.env.PORT || 3000; // added this in socket
 var router         = express.Router(); // added this in socket
 var app            = express();
-// var socketio       = require('socket.io');
 
 var config         = require('./config/config');
 var User           = require('./models/user');
@@ -65,6 +64,11 @@ app.use('/api', expressJWT({ secret: secret })
 //   next();
 // });
 
+// SASS 
+// var result = sass.renderSync({
+//  data: scss_content
+//  [, options..]
+// });
 
 // THIS IS SOCKET STUFF THAT I TRIED TO ADD
 app.set("views", "./views"); // not sure if this needs to go at the top

@@ -13,7 +13,7 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-
+// var sass           = require('node-sass');
 var app            = express();
 
 var config         = require('./config/config');
@@ -62,6 +62,11 @@ app.use('/api', expressJWT({ secret: secret })
 //   next();
 // });
 
+// SASS 
+// var result = sass.renderSync({
+//  data: scss_content
+//  [, options..]
+// });
 
 var routes = require("./config/routes");
 app.use("/api", routes);

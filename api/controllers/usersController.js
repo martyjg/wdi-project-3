@@ -13,23 +13,22 @@ function usersShow(req, res){
   User.findById(req.params.id, function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
 
-    var allGroups  = Group.find({});
-    var userGroups = []; 
-    console.log(allGroups);
-    for (var i = 0; i < allGroups.length; i++) {
-      console.log("first loop");
-      for (var j = 0; j < allGroups[i].users.length; i++) {
+    Group.find({}, function(err, allGroups) {
+      var userGroups = []; 
+      for (var i = 0; i < allGroups.length; i++) {
+        console.log(allGroups[i].users);
 
-        if (allGroups[i].users[j]._id === req.params.id) {
+        // for (var j = 0; j < allGroups[i].users.length; i++) {
+        //   if (allGroups[i].users[j]._id === req.params.id) {
 
-          userGroups.push(allGroups[i]);
-          console.log(userGroups);
-          if (err) return res.status(404).json({message: 'Something went wrong.'});
-        }
-        res.status(200).json({ user: user, groups: userGroups });
-
+        //     userGroups.push(allGroups[i]);
+        //     if (err) return res.status(404).json({message: 'Something went wrong.'});
+        //   }
+        //   res.status(200).json({ user: user, groups: userGroups });
+        // }
       }
-    }
+    });
+    
   });
 }
 

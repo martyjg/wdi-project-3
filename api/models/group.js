@@ -4,7 +4,7 @@ var bcrypt   = require("bcrypt-nodejs");
 var Poll     = require("../models/poll");
 
 var groupSchema = mongoose.Schema({
-  name:        { type: String, required: true },
+  name:        String,
   description: String,
   users:       [{ type: mongoose.Schema.ObjectId, ref: "User", required: true }],
   created_by:  { type: mongoose.Schema.ObjectId, ref: "User" },

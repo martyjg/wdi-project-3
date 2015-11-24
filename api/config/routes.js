@@ -21,13 +21,13 @@ router.route('/users/:id')
 router.route('/users/:id/edit')
   // .get(usersController.usersEdit)
 
-// // GROUP ROUTE HANDLERS 
-// router.route('/groups')
-//   .post(groupsController.groupsCreate)
+// GROUP ROUTE HANDLERS 
+router.route('/groups')
+  .post(groupsController.groupsCreate)
 
-// router.route('/groups/:id')
-//   .get(groupsController.groupsShow)
-//   .patch(groupsController.groupsUpdate)
+router.route('/groups/:id')
+  .get(groupsController.groupsShow)
+  .patch(groupsController.groupsUpdate)
 //   .delete(groupsController.groupsDelete)
 
 // // POLL ROUTE HANDLERS

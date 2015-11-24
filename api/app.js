@@ -13,9 +13,9 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-var server         = require("http").createServer(app);
-var port           = process.env.PORT || 3000;
-var router         = express.Router();
+var server         = require("http").createServer(app); // added this in socket
+var port           = process.env.PORT || 3000; // added this in socket
+var router         = express.Router(); // added this in socket
 var app            = express();
 
 var config         = require('./config/config');
@@ -65,8 +65,33 @@ app.use('/api', expressJWT({ secret: secret })
 // });
 
 
+// THIS IS SOCKET STUFF THAT I TRIED TO ADD
+app.set("views", "./views"); // not sure if this needs to go at the top
+app.set("view engine", "ejs"); // not sure if this needs to go at the top (also, we havent used ejs?)
+app.get('/', function(req, res){
+  res.render("index");
+});
+
+app.use("/", router);
+server.listen(port);
+console.log("SERVER STARTED ON " + port);
+
+var io = require("socket.io")(server);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  })
+  socket.on("chat message", function(msg) {
+    io.emit("chat message", msg);
+  })
+});
+
+// The below is everything that is existing.
+
 var routes = require("./config/routes");
 app.use("/api", routes);
 
-app.listen(3000);
+app.listen(3000); // This seems to be causing me a problem
 console.log("Heard loud and clear")

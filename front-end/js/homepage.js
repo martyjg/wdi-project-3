@@ -24,7 +24,7 @@ function displayGroups(res) {
           '</div>' +
           '<div class="card-content">' +
             '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
-            '<p><a href="/" id="' + id + '"></a></p>' +
+            '<p><a href="/" id="' + id + '">View Group</a></p>' +
           '</div>' +
           '<div class="card-reveal">' +
             '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
@@ -40,6 +40,7 @@ function displayGroups(res) {
   }
 }
 
+
 function showGroupPage(id) {
   event.preventDefault();
   var method = "get";
@@ -50,7 +51,7 @@ function showGroupPage(id) {
 function createNewGroup() {
   event.preventDefault();
   console.log(this);
-  
+
 }
 
 function displayPolls(res) {

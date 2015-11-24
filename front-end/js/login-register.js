@@ -35,7 +35,7 @@ function submitForm() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequestForLoginRegister(method, url, data, authenticationSuccessful);
+  return ajaxRequest(method, url, data, authenticationSuccessful);
 }
 
 
@@ -83,7 +83,7 @@ function setRequestHeader(xhr, settings) {
   if (token) return xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
 
-function ajaxRequestForLoginRegister(method, url, data, callback) {
+function ajaxRequest(method, url, data, callback) {
   return $.ajax({
     method: method,
     url: url,

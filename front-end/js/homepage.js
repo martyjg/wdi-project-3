@@ -1,21 +1,10 @@
-function showHomepage(id) {
-  console.log(id);
+function showHomepage(data) {
   var method = "get";
-  var url = "http://localhost:3000/api/users/" + id;
+  var url = "http://localhost:3000/api/users/" + data.user._id;
   return ajaxRequest(method, url, null, getUserPage);
 }
 
 function getUserPage(res) {
-  console.log(res);
+  console.log("getUserPage fires");
 }
 
-
-// event.preventDefault();
-
-// var method = $(this).attr("method");
-// var url    = "http://localhost:3000/api" + $(this).attr("action");
-// var data   = $(this).serialize();
-
-// console.log(data);
-
-// return ajaxRequest(method, url, data, authenticationSuccessful);

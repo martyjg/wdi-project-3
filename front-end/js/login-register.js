@@ -69,7 +69,7 @@ function loggedOutState() {
 
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
-  showHomepage(data.user._id);
+  showHomepage(data);
   return checkLoginState();
 }
 

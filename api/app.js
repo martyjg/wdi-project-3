@@ -13,8 +13,7 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-var socketio       = require('socket.io');
-var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
+
 var port           = process.env.PORT || 3000; // added this in socket
 var router         = express.Router(); // added this in socket
 var app            = express();

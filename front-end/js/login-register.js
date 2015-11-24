@@ -7,7 +7,7 @@ function init() {
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
   $(".homepage").hide();
-  $(".new-poll-form").hide();
+  $("#poll-form").hide();
   hideErrors();
   checkLoginState();
 }
@@ -57,11 +57,13 @@ function displayErrors(data) {
 function loggedInState() {
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
-  $(".new-poll-form").show();
+  $("#poll-form").hide();
+
 }
 
 function loggedOutState() {
   $(".logged-out, .form-section").show();
+  $("#poll-form").hide();
   $(".logged-in").hide();
   $(".homepage").hide();
 }

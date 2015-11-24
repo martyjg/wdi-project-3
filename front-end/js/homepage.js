@@ -36,13 +36,15 @@ function displayGroups(res) {
 
 
     );
-    $("#" + id).on("click", showGroupPage(id));
+    $("#" + id).on("click", showGroupPage);
   }
 }
 
 
-function showGroupPage(id) {
+function showGroupPage() {
   event.preventDefault();
+  id = $(this).attr('id');
+  console.log("this is the id" + id)
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
@@ -55,7 +57,9 @@ function createNewGroup() {
 }
 
 function displayPolls(res) {
+  $(".homepage").hide();
   $(".group-page").show();
+  $("#poll-form").show();
 }
 
 function ajaxRequest(method, url, data, callback) {

@@ -33,12 +33,14 @@ router.route('/groups/:id')
 router.route('/groups/:id/adduser')
   .put(groupsController.groupsAddUser)
 
-// // POLL ROUTE HANDLERS
-// router.route('/polls')
-//   .post(pollsController.pollsCreate)
+// POLL ROUTE HANDLERS
+router.route('/polls')
+  .post(pollsController.pollsCreate)
 
-// router.route('/polls/:id')
-//   .get(pollsController.pollsShow)
+router.route('/polls/:id')
+  .get(pollsController.pollsShow)
+
+
 
 // // RESPONSE ROUTE HANDLER
 // router.route('/responses')

@@ -1,12 +1,13 @@
 $(init);
 
 function init() {
-  $("form").on("submit", submitForm);
+  $("#login, #register").on("submit", submitForm);
   $("#new-group").on("submit", createNewGroup);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
   $(".homepage").hide();
+  $(".new-poll-form").hide();
   hideErrors();
   checkLoginState();
 }
@@ -35,7 +36,7 @@ function submitForm() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequest(method, url, data, authenticationSuccessful);
+  return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
 
 
@@ -56,6 +57,7 @@ function displayErrors(data) {
 function loggedInState() {
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
+  $(".new-poll-form").show();
 }
 
 function loggedOutState() {
@@ -67,7 +69,16 @@ function loggedOutState() {
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
   showHomepage(data);
+  setCurrentUser(data.token);
   return checkLoginState();
+}
+
+function setCurrentUser(token) {
+  return localStorage.setItem('currentUser', atob(token.split(".")[1]));
+}
+
+function currentUser(){
+  return JSON.parse(localStorage.getItem('currentUser'));
 }
 
 function setToken(token) {
@@ -83,7 +94,7 @@ function setRequestHeader(xhr, settings) {
   if (token) return xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
 
-function ajaxRequest(method, url, data, callback) {
+function ajaxRequestforLoginRegister(method, url, data, callback) {
   return $.ajax({
     method: method,
     url: url,

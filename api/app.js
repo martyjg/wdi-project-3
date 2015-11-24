@@ -57,6 +57,11 @@ app.use('/api', expressJWT({ secret: secret })
   })
 );
 
+app.use(function(req, res, next){
+  global.currentUser = req.user;
+  next();
+})
+
 // app.use(function (err, req, res, next) {
 //   if (err.name === 'UnauthorizedError') {
 //     return res.status(401).json({message: 'Unauthorized request.'});

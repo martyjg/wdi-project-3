@@ -57,7 +57,6 @@ function groupsAddUser(req, res){
   });
 }
 
-
 function groupsDelete(req, res) {
   var id = req.params.id;
 

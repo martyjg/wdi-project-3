@@ -55,5 +55,19 @@ function createNewGroup() {
 }
 
 function displayPolls(res) {
+  $(".group-page").show();
+}
+
+function ajaxRequest(method, url, data, callback) {
+  return $.ajax({
+    method: method,
+    url: url,
+    data: data,
+    beforeSend: setRequestHeader
+  }).done(function(res) {
+    if (callback) return callback(res);    
+  }).fail(function(data) {
+    displayErrors();
+  });
 }
 

@@ -13,8 +13,11 @@ var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var path           = require('path');
 var cors           = require('cors');
-
+var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
+var port           = process.env.PORT || 8000; // added this in socket
+var router         = express.Router(); // added this in socket
 var app            = express();
+var socketio       = require('socket.io');
 
 var config         = require('./config/config');
 var User           = require('./models/user');
@@ -43,7 +46,7 @@ app.use(cors());
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
-// app.use(passport.session()); 
+app.use(passport.session()); 
 app.use(flash());
 
 app.use('/api', expressJWT({ secret: secret })
@@ -63,8 +66,33 @@ app.use('/api', expressJWT({ secret: secret })
 // });
 
 
+// THIS IS SOCKET STUFF THAT I TRIED TO ADD
+app.set("views", "./views"); // not sure if this needs to go at the top
+app.set("view engine", "ejs"); // not sure if this needs to go at the top (also, we havent used ejs?)
+app.get('/', function(req, res){
+  res.render("index");
+});
+
+app.use("/", router);
+server.listen(port);
+console.log("SERVER STARTED ON " + port);
+
+var io = require("socket.io")(server);
+
+io.sockets.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  })
+  socket.on("chat message", function(msg) {
+    io.emit("chat message", msg);
+  })
+});
+
+// The below is everything that was previously there before I dived in.
+
 var routes = require("./config/routes");
 app.use("/api", routes);
 
-app.listen(3000);
+app.listen(3000); // This seems to be causing me a problem
 console.log("Heard loud and clear")

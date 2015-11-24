@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>VibeRate</title>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
+  <script type="text/javascript" src="./js/socket.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
@@ -12,7 +14,7 @@
 <body> 
   <nav>
     <div class="nav-wrapper">
-    <a href="#" class="brand-logo">VibeRate</a>
+      <a href="#" class="brand-logo">VibeRate</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/" class="login-link logged-out">Login</a></li>
         <li><a href="/" class="register-link logged-out">Register</a></li>
@@ -72,6 +74,20 @@
       </div>
     </form>
   </div>
+
+
+<!-- THIS IS THE SOCKET GROUP FEED -->
+  <div class="socket">
+    <ul id="messages"></ul>
+    <form action="">
+      <input type="radio" name="cool" value="cool" checked>😎
+      <input type="radio" name="turd" value="rubbish">💩
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </div>
+
+
+
 
 </body>
 </html>

@@ -15,7 +15,7 @@ var path           = require('path');
 var cors           = require('cors');
 var socketio       = require('socket.io');
 var server         = require("http").createServer(app); // added this in socket and backed up on StackOverflow.
-var port           = process.env.PORT || 8000; // added this in socket
+var port           = process.env.PORT || 3000; // added this in socket
 var router         = express.Router(); // added this in socket
 var app            = express();
 
@@ -79,20 +79,20 @@ app.get('/', function(req, res){
 });
 
 app.use("/", router);
-server.listen(port);
-console.log("SERVER STARTED ON " + port);
+// server.listen(port);
+// console.log("SERVER STARTED ON " + port);
 
-var io = require("socket.io")(server);
+// var io = require("socket.io")(server);
 
-io.sockets.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on("disconnect", function() {
-    console.log("user disconnected");
-  })
-  socket.on("chat message", function(msg) {
-    io.emit("chat message", msg);
-  })
-});
+// io.sockets.on('connection', function(socket){
+//   console.log('a user connected');
+//   socket.on("disconnect", function() {
+//     console.log("user disconnected");
+//   })
+//   socket.on("chat message", function(msg) {
+//     io.emit("chat message", msg);
+//   })
+// });
 
 // The below is everything that was previously there before I dived in.
 

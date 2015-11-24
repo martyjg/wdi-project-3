@@ -28,6 +28,7 @@ function showGroupPage(id) {
 }
 
 function displayPolls(res) {
-  console.log("jessica christ we made it this far")
+  $(".group-page").show();
+  
 }
 

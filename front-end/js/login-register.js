@@ -5,6 +5,7 @@ function init() {
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $("#register").hide();
+  $(".new-poll-form").hide();
   hideErrors();
   checkLoginState();
 }
@@ -70,7 +71,16 @@ function loggedOutState() {
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
   showHomepage(data);
+  setCurrentUser(data.token);
   return checkLoginState();
+}
+
+function setCurrentUser(token) {
+  return localStorage.setItem('currentUser', atob(token.split(".")[1]));
+}
+
+function currentUser(){
+  return JSON.parse(localStorage.getItem('currentUser'));
 }
 
 function setToken(token) {

@@ -84,8 +84,28 @@
 
 <!-- USER SHOW PAGE -->
 
-<div class="row homepage">
-</div>
+  <div class="row homepage">
+  </div>
+
+<!-- GROUP SHOW PAGE -->
+
+  <div class="row new-poll-form form-section">
+    <form class="col s12" id="newpoll" method="post" action="/polls">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="question" name="question" type="text">
+          <label for="question">Question</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="submit" value="add poll" class="btn" id="submit">
+        </div>
+      </div>
+    </form>
+  </div>
+
+
 
 
 

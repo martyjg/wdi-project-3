@@ -3,9 +3,11 @@ var Poll   = require('../models/poll');
 
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
+  console.log(poll);
   poll.save(function(err, poll) {
     if (err) return res.status(500).send(err);
-    console.log("poll created" + group);
+    console.log("poll created" + poll);
+  res.status(200).json(poll);
   })
 }
 

@@ -1,4 +1,5 @@
 var Poll   = require('../models/poll');
+var Group  = require('../models/group');
 
 
 function pollsCreate(req, res) {
@@ -10,14 +11,14 @@ function pollsCreate(req, res) {
   res.status(200).json(poll);
   })
 
-  console.log(req.body);
+  var id = req.body.groupId;
 
-  // Group.findById({_id: id }, function(err, group) {
-  //   group.polls.push(poll);
-  //     if (err) return res.status(500).json({ message: "Not saving"});
-  //     group.save();
-  //     console.log(group);
-  // })
+  Group.findById({_id: id }, function(err, group) {
+    group.polls.push(poll);
+      if (err) return res.status(500).json({ message: "Not saving"});
+      group.save();
+      console.log(group);
+  })
 }
 
 function pollsShow(req, res) {

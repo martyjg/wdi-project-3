@@ -51,16 +51,14 @@ function displayPolls(req, res) {
   $(".homepage").hide();
   $(".group-page").show();
   $("#poll-form").show();
-  $("#group-id").val(req._id);
+  $("#groupId").val(req._id);
 }
 
 function submitPoll() {
   event.preventDefault();
-  console.log(this);
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-  console.log(data);
 
   return ajaxRequest(method, url, data);
 }

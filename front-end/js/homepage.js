@@ -83,12 +83,11 @@ function displayPolls(req) {
   for (var i = 0; i < polls.length; i++) {
     $("#poll-feed").prepend(
       '<li>' +
-        '<div class="collapsible-header"><i class="material-icons"></i>' + polls[i].question + '</div>' +
+        '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
         '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
       '</li>'
     )
   }
-
 }
 
 function submitPoll() {

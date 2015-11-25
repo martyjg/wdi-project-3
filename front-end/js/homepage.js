@@ -61,6 +61,7 @@ function showGroupPage() {
   var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
+  createMemberForm(id);
   return ajaxRequest(method, url, null, displayPolls, true);
 }
 
@@ -71,6 +72,26 @@ function createNewGroup() {
   var data   = $(this).serialize();
   return ajaxRequest(method, url, data, addGroupToHomepage, true);
 }
+
+function createMemberForm(id) {
+  $("#newmember").append(
+    '<form class="col s12 new-member" method="put" action="/groups" id=' + id + '>' +
+      '<div class="row">' +
+        '<div id="the-basics" class="col s12">' +
+        '<input id="username" name="username" class="typeahead" type="text" placeholder="Add New Group Member">' +
+        '</div>' +
+      '</div>' +
+      '<div class="col s12">' +
+        '<div class="row">' +
+          '<input type="submit" value="new-member" class="btn" id="submit">' +
+        '</div>' +
+      '</div>' +
+    '</form>'
+    )
+  $(".new-member").on("submit", submitNewMember);
+}
+
+
 
 function addGroupToHomepage(req) {
   $('.homepage').append(
@@ -168,7 +189,6 @@ function addResponse(req, res) {
 
 
 function ajaxRequest(method, url, data, callback, async) {
-  console.log("The ajax is firing");
   return $.ajax({
     method: method,
     url: url,

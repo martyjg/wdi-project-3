@@ -43,8 +43,6 @@ router.route('/polls')
 router.route('/polls/:id')
   .get(pollsController.pollsShow)
 
-
-
 // RESPONSE ROUTE HANDLER
 router.route('/responses')
   .post(responsesController.responsesCreate)

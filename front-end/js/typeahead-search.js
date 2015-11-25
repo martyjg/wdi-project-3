@@ -29,7 +29,6 @@ function getUsersList() {
     allUsers.push(getUsers().responseJSON.users[i].username)
   };
 
-  console.log(allUsers)
 
   $('#the-basics .typeahead').typeahead({
     hint: true,
@@ -52,6 +51,21 @@ function getUsersCallback(data){
   return data;
 }
 
+function submitNewMember() {
+  event.preventDefault();
+  var method = $(this).attr("method");
+  var action = $(this).attr("action");
+  var url = "http://localhost:3000/api" + action + "/" + "HERE WE NEED THE GROUP ID" + "/adduser";
+  var data = $(this).serialize();
+  console.log(data);
+}
+// function createNewGroup() {
+//   event.preventDefault();
+//   var method = $(this).attr("method");
+//   var url    = "http://localhost:3000/api" + $(this).attr("action");
+//   var data   = $(this).serialize();
+//   return ajaxRequest(method, url, data, addGroupToHomepage, true);
+// }
 
 
 

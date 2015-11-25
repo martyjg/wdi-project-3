@@ -7,7 +7,7 @@
   <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
-  <script type="text/javascript" src="./js/response.js"></script>
+  <!--<script type="text/javascript" src="./js/response.js"></script>-->
   <script type="text/javascript" src="./js/typeahead-search.js"></script>
   <script type="text/javascript" src="./js/socket.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -100,10 +100,17 @@
     </section>
 
 
-
-
-
     <section id="newmember">
+    <form class="col s12 new-member" method="post" action="/groups">
+
+    <div id="the-basics">
+      <input class="typeahead" type="text" placeholder="States of USA">
+    </div>
+    </form>
+    </section>
+
+
+<!--     <section id="newmember">
       <form class="col s12 new-member" method="post" action="/groups">
         <div class="row">
           <div class="input-field col s12">
@@ -119,7 +126,7 @@
           </div>
         </div>
       </form>
-    </section>
+    </section> -->
 
     <section id="newgroup" class="row">
       <form class="col s12 new-group" method="post" action="/groups">

@@ -36,6 +36,7 @@ function displayGroups(res) {
 
 function showGroupPage() {
   event.preventDefault();
+  // console.log("this is this at the point of show group " + req);
   id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
@@ -51,7 +52,6 @@ function createNewGroup() {
 }
 
 function addGroupToHomepage(req) {
-  console.log(req);
   $('.homepage').append(
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
@@ -75,10 +75,13 @@ function displayPolls(req) {
   $(".homepage").hide();
   $(".group-page").show();
   $("#poll-form").show();
-  $("#groupId").val(req._id);
-  console.log(req);
+  $("#groupId").val(req.group._id);
 
-  var polls = req.polls;
+  console.log("Group members: " + req.groupMembers);
+
+  $(".group-members").html("Group members will go here");
+
+  var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
     $("#poll-feed").prepend(
@@ -100,9 +103,9 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  $("#poll-feed").append(
+  $("#poll-feed").prepend(
     '<li>' +
-      '<div class="collapsible-header"><i class="material-icons"></i>' + req.question + '</div>' +
+      '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
       '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
     '</li>'
   )

@@ -87,24 +87,28 @@
 
 <!-- GROUP SHOW PAGE -->
 
-<div class="row new-poll-form form-section" id="poll-form">
-  <form class="col s12" id="newpoll" method="post" action="/polls">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="question" name="question" type="text">
-        <label for="question">Question</label>
-      </div>
-      <div class="input-field col s12">
-        <input id="groupId" name="groupId" type="hidden">
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input type="submit" value="add poll" class="btn" id="submit">
-      </div>
-    </div>
-  </form>
+<div class="group-members">
 </div>
+
+
+  <div class="row new-poll-form form-section" id="poll-form">
+    <form class="col s12" id="newpoll" method="post" action="/polls">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="question" name="question" type="text">
+          <label for="question">Question</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="groupId" name="groupId" type="hidden">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="submit" value="add poll" class="btn" id="submit">
+        </div>
+      </div>
+    </form>
+  </div>
 
 
 <div class="row homepage">
@@ -147,11 +151,9 @@
   </div>
 </div>
 
+
 <ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
 </ul>
-
-
-
 
 
 <!-- THIS IS THE SOCKET GROUP FEED -->

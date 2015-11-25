@@ -86,11 +86,11 @@ function groupsShow(req, res) {
     });
   };
 
+module.exports = {
+  groupsCreate: groupsCreate,
+  groupsShow:   groupsShow,
+  groupsUpdate: groupsUpdate,
+  groupsDelete: groupsDelete,
+  groupsAddUser: groupsAddUser
+}
 
-  module.exports = {
-    groupsCreate: groupsCreate,
-    groupsShow:   groupsShow,
-    groupsUpdate: groupsUpdate,
-    groupsDelete: groupsDelete,
-    groupsAddUser: groupsAddUser
-  }

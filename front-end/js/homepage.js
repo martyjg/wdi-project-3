@@ -5,7 +5,7 @@ function showHomepage(data) {
   var id = user._id;
   var method = "get";
   var url = "http://localhost:3000/api/users/" + id;
-  return ajaxRequest(method, url, null, displayGroups);
+  return ajaxRequest(method, url, null, displayGroups, true);
 }
 
 
@@ -61,7 +61,7 @@ function showGroupPage() {
   var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
-  return ajaxRequest(method, url, null, displayPolls);
+  return ajaxRequest(method, url, null, displayPolls, true);
 }
 
 function createNewGroup() {
@@ -69,7 +69,7 @@ function createNewGroup() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-  return ajaxRequest(method, url, data, addGroupToHomepage);
+  return ajaxRequest(method, url, data, addGroupToHomepage, true);
 }
 
 function addGroupToHomepage(req) {
@@ -98,6 +98,8 @@ function addGroupToHomepage(req) {
 function displayPolls(req) {
   $("#groups").hide();
   $("#group").show();
+  getUsersList();
+
 
   // $(".homepage").hide();
   // $(".group-page").show();
@@ -133,7 +135,7 @@ function submitPoll() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequest(method, url, data, addPoll);
+  return ajaxRequest(method, url, data, addPoll, true);
 }
 
 function addPoll(req, res) {
@@ -157,7 +159,7 @@ function submitResponse() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequest(method, url, data, addResponse); 
+  return ajaxRequest(method, url, data, addResponse, true); 
 }
 
 function addResponse(req, res) {
@@ -165,15 +167,16 @@ function addResponse(req, res) {
 }
 
 
-function ajaxRequest(method, url, data, callback) {
+function ajaxRequest(method, url, data, callback, async) {
+  console.log("The ajax is firing");
   return $.ajax({
     method: method,
     url: url,
     data: data,
+    async: async,
     beforeSend: setRequestHeader
   }).done(function(res) {
-    console.log(res);
-    if (callback) return callback(res);    
+    if (callback) return callback(res);
   }).fail(function(data) {
     displayErrors();
   });

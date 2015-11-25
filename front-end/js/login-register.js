@@ -45,7 +45,6 @@ function submitForm() {
 function logout() {
   event.preventDefault();
   localStorage.clear();
-  init();
   return loggedOutState();
 }
 

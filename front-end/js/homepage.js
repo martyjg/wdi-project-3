@@ -7,6 +7,32 @@ function showHomepage(data) {
   return ajaxRequest(method, url, null, displayGroups);
 }
 
+
+// EMOJI N TING
+
+function getEmoji(keyword){
+  console.log(emoji)
+  for (var i = 0; i < emojis.length; i++) {
+    if(keyword === emojis[i]){
+      console.log(emojis[i].moji)
+    }
+  };
+}
+
+var emoji ;
+
+
+function getEmojiAjaxRequest(){
+  $.ajax({
+    method: "GET",
+    url: "https://www.emojidex.com/api/v1/utf_emoji"
+  }).done(function(moji){
+    return moji
+  })
+}
+
+
+
 function displayGroups(res) {
   var groups = res.groups;
 
@@ -24,7 +50,7 @@ function displayGroups(res) {
           '</div>' +
           '<div class="card-reveal">' +
             '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-            '<p>' + groups[i].description + '</p>' +
+            '<p>' + getEmoji(groups[i].emojimage) + '</p>' +
           '</div>' +
         '</div>' +
       '</div>'
@@ -64,7 +90,7 @@ function addGroupToHomepage(req) {
         '</div>' +
         '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-          '<p>' + req.description + '</p>' +
+          '<p>' + getEmoji(req.emojimage) + '</p>' +
         '</div>' +
       '</div>' +
     '</div>'
@@ -108,6 +134,10 @@ function addPoll(req, res) {
   )
 }
 
+
+// function groupImage(req, res) {
+
+// }
 
 
 

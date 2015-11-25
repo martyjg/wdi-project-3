@@ -21,8 +21,6 @@ function groupsCreate(req, res) {
     if (!user) return res.status(404).json(err);
 
     console.log("user " + user + " added to group");
-
-    res.status(204).json({ message: "Current user was added to the new group" }); 
   });
 
   console.log(group);

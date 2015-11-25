@@ -8,6 +8,26 @@ function showHomepage(data) {
   return ajaxRequest(method, url, null, displayGroups);
 }
 
+
+// EMOJI N TING
+
+function getEmoji(keyword){
+  $.ajax({
+    method: "GET",
+    url: "https://www.emojidex.com/api/v1/utf_emoji"
+  }).done(function(data){
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].code === keyword) {
+        $('h1#'+keyword).html(data[i].moji)
+      }
+    };
+  })
+}
+
+function callback(data){
+  return data
+}
+
 function displayGroups(res) {
   var groups = res.groups;
 
@@ -16,21 +36,21 @@ function displayGroups(res) {
     $('.homepage').append(
       '<div class="col s12 m6 l4">' +
       '<div class="card">' +
-          '<div class="card-image waves-effect waves-block waves-light">' +
-            '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
-          '</div>' +
-          '<div class="card-content">' +
-            '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
-            '<p><a href="/" id="' + id + '">View Group</a></p>' +
-          '</div>' +
-          '<div class="card-reveal">' +
-            '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-            '<p>' + groups[i].description + '</p>' +
-          '</div>' +
-        '</div>' +
-      '</div>'
-    );
+      '<div class="card-image waves-effect waves-block waves-light">' +
+      '<h1 class="emojimage" id='+groups[i].emojimage+'><h1>' +
+      '</div>' +
+      '<div class="card-content">' +
+      '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><span></span><i class="fa fa-arrow-up"></i></i></span>' +
+      '<p><a href="/" id="' + id + '">View Group</a></p>' +
+      '</div>' +
+      '<div class="card-reveal">' +
+      '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
+      '<p></p>' +
+      '</div>' +
+      '</div>' +
+      '</div>');
     $("#" + id).on("click", showGroupPage);
+    getEmoji(groups[i].emojimage)
   }
 }
 
@@ -56,22 +76,23 @@ function addGroupToHomepage(req) {
   $('.homepage').append(
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
-        '<div class="card-image waves-effect waves-block waves-light">' +
-          '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
-        '</div>' +
-        '<div class="card-content">' +
-          '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
-          '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
-        '</div>' +
-        '<div class="card-reveal">' +
-          '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-          '<p>' + req.description + '</p>' +
-        '</div>' +
-      '</div>' +
+    '<div class="card-image waves-effect waves-block waves-light">' +
+    '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
+    '</div>' +
+    '<div class="card-content">' +
+    '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
+    '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
+    '</div>' +
+    '<div class="card-reveal">' +
+    '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
+    '<p id='+groups[i].emojimage+'></p>' +
+    '</div>' +
+    '</div>' +
     '</div>'
-  );
+    );
   $("#newgroup").hide();
   $("#groups").show();
+
 }
 
 function displayPolls(req) {
@@ -91,16 +112,18 @@ function displayPolls(req) {
   $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
     )
 }
-
+  
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
+    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><input id="submit" name="minus2" type="submit" class="btn minus2" value="-2" ><input id="submit" name="minus1" type="submit" class="btn minus1" value="-1" ><input id="submit" name="zero" type="submit" class="btn zero" value="0" ><input id="submit" name="plus1" type="submit" class="btn plus1" value="+1" ><input id="submit" name="plus2" type="submit" class="btn plus2" value="+2" ></form></section>';
+
     $("#poll-feed").prepend(
       '<li>' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
-        '<div class="collapsible-body"><p></p></div>' +
+        '<div class="collapsible-body"><p>' + responseForm + '</p></div>' +
       '</li>'
-    )
+      )
   }
 }
 
@@ -114,14 +137,31 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
+  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><input id="submit" name="minus2" type="submit" class="btn minus2" value="-2" ><input id="submit" name="minus1" type="submit" class="btn minus1" value="-1" ><input id="submit" name="zero" type="submit" class="btn zero" value="0" ><input id="submit" name="plus1" type="submit" class="btn plus1" value="+1" ><input id="submit" name="plus2" type="submit" class="btn plus2" value="+2" ></form></section>';
+
   $("#poll-feed").prepend(
     '<li>' +
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
-      '<div class="collapsible-body"><p></p></div>' +
+      '<div class="collapsible-body"><p id="' + req._id + '">' + responseForm + '</p></div>' +
     '</li>'
-  )
+    )
   $("#newpoll").hide();
   $("#group").show();
+}
+
+
+function submitResponse() {
+  event.preventDefault();
+  console.log("hiya");
+  var method = $(this).attr("method");
+  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var data   = $(this).serialize();
+
+  return ajaxRequest(method, url, data, addResponse); 
+}
+
+function addResponse(req, res) {
+  console.log("jessica christ");
 }
 
 
@@ -132,6 +172,7 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
+    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

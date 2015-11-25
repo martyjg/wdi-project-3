@@ -1,15 +1,14 @@
 $(init);
 
 function init() {
-  $("#login, #register").on("submit", submitForm);
-  $("#new-group").on("submit", createNewGroup);
-  $("#newpoll").on("submit", submitPoll);
+  $(".login, .register").on("submit", submitForm);
+  $(".new-group").on("submit", createNewGroup);
+  $(".newpoll").on("submit", submitPoll);
+
 
   $(".logout-link").on("click", logout);
-  $(".login-link, .register-link").on("click", showPage);
-  $("#register").hide();
-  $(".homepage").hide();
-  $("#poll-form").hide();
+  $(".login-link, .register-link, .groups-link, .members-link, .newgroup-link, .newpoll-link, .newmember-link").on("click", showPage);
+
   hideErrors();
   checkLoginState();
 }
@@ -24,10 +23,10 @@ function checkLoginState() {
 
 function showPage() {
   event.preventDefault();
-  var linkClass = $(this).attr("class").split("-")[0];
-  $('#register').hide();
-  $('#login').hide();
 
+  var linkClass = $(this).attr("class").split("-")[0];
+  console.log(linkClass);
+  $("section").hide();
   return $("#" + linkClass).show();
 }
 
@@ -37,15 +36,12 @@ function submitForm() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-  console.log(data);
   return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
-
 
 function logout() {
   event.preventDefault();
   localStorage.clear();
-  init();
   return loggedOutState();
 }
 
@@ -58,22 +54,22 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  $(".logged-out, .form-section").hide();
+  $(".logged-out").hide();
   $(".logged-in").show();
-  $("#poll-form").hide();
-
+  $("section").hide();
+  $("#groups").show();
+  showHomepage();
 }
 
 function loggedOutState() {
   $(".logged-out, .form-section").show();
-  $("#poll-form").hide();
   $(".logged-in").hide();
-  $(".homepage").hide();
+  $("section").hide();
+  $("#register").show();
 }
 
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
-  showHomepage(data);
   setCurrentUser(data.token);
   return checkLoginState();
 }

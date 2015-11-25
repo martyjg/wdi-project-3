@@ -5,6 +5,7 @@ var Group  = require('../models/group');
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
   poll.created_by = currentUser;
+
   poll.save(function(err, poll) {
     if (err) return res.status(500).send(err);
   res.status(200).json(poll);

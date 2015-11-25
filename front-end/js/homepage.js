@@ -77,6 +77,7 @@ function displayPolls(req) {
   $("#poll-form").show();
   $("#groupId").val(req.group._id);
   $(".group-members").show();
+  $("#poll-feed").show();
   var groupMembers = req.groupMembers;
 
   for (i = 0; i < groupMembers.length; i++) {

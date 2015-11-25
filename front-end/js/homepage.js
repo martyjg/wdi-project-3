@@ -52,6 +52,19 @@ function displayPolls(req, res) {
   $(".group-page").show();
   $("#poll-form").show();
   $("#groupId").val(req._id);
+  console.log(req);
+
+  var polls = req.polls;
+
+  for (var i = 0; i < polls.length; i++) {
+    $("#poll-feed").prepend(
+      '<li>' +
+        '<div class="collapsible-header"><i class="material-icons"></i>' + polls[i].question + '</div>' +
+        '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+      '</li>'
+    )
+  }
+
 }
 
 function submitPoll() {
@@ -60,8 +73,20 @@ function submitPoll() {
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
-  return ajaxRequest(method, url, data);
+  return ajaxRequest(method, url, data, addPoll);
 }
+
+function addPoll(req, res) {
+  $("#poll-feed").append(
+    '<li>' +
+      '<div class="collapsible-header"><i class="material-icons"></i>' + req.question + '</div>' +
+      '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+    '</li>'
+  )
+}
+
+
+
 
 function ajaxRequest(method, url, data, callback) {
   return $.ajax({
@@ -70,7 +95,6 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
-    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

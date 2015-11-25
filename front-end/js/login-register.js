@@ -37,7 +37,6 @@ function submitForm() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
-  console.log(data);
   return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
 
@@ -45,7 +44,6 @@ function submitForm() {
 function logout() {
   event.preventDefault();
   localStorage.clear();
-  init();
   return loggedOutState();
 }
 

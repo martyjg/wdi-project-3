@@ -7,7 +7,7 @@
   <script type="text/javascript" src="./js/emoji.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
-  <script type="text/javascript" src="./js/response.js"></script>
+  <!-- <script type="text/javascript" src="./js/response.js"></script> -->
   <script type="text/javascript" src="./js/socket.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
@@ -130,6 +130,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+            <input id="group-emojimage" name="emojimage" type="text">
+            <label for="group-emojimage">Group Emojimage</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
             <input id="group-description" name="description" type="text">
             <label for="group-description">Group Description</label>
           </div>
@@ -158,56 +164,55 @@
       </ul>
     </section>
 
-<!-- 
-          <form class="col s12" id="new-group" method="post" action="/groups">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="group-name" name="name" type="text">
-                <label for="group-name">Group Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="group-emojimage" name="emojimage" type="text">
-                <label for="group-emojimage">Group Emojimage</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="group-description" name="description" type="text">
-                <label for="group-description">Group Description</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input type="submit" value="new-group" class="btn" id="submit">
-              </div>
-            </div>
-          </form>
-          
-        </p>
-      </div>
-    </div> -->
 
-    <section id="newpoll" class="row">
-      <form class="col s12 newpoll" method="post" action="/polls">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="question" name="question" type="text" placeholder="What's your vibe on:">
-            <label for="question">Question</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="groupId" name="groupId" type="hidden">
-          </div>
+    <!-- form class="col s12" id="new-group" method="post" action="/groups">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="group-name" name="name" type="text">
+          <label for="group-name">Group Name</label>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="submit" value="add poll" class="btn" id="submit">
-          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="group-emojimage" name="emojimage" type="text">
+          <label for="group-emojimage">Group Emojimage</label>
         </div>
-      </form>
-    </section>
-  </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="group-description" name="description" type="text">
+          <label for="group-description">Group Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="submit" value="new-group" class="btn" id="submit">
+        </div>
+      </div>
+    </form> -->
+
+  
+
+
+<section id="newpoll" class="row">
+  <form class="col s12 newpoll" method="post" action="/polls">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="question" name="question" type="text" placeholder="What's your vibe on:">
+        <label for="question">Question</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="groupId" name="groupId" type="hidden">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="submit" value="add poll" class="btn" id="submit">
+      </div>
+    </div>
+  </form>
+</section>
+</div>
 
 </body>
 </html>

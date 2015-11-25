@@ -12,27 +12,21 @@ function showHomepage(data) {
 // EMOJI N TING
 
 function getEmoji(keyword){
-  console.log(emoji)
-  for (var i = 0; i < emojis.length; i++) {
-    if(keyword === emojis[i]){
-      console.log(emojis[i].moji)
-    }
-  };
-}
-
-var emoji ;
-
-
-function getEmojiAjaxRequest(){
   $.ajax({
     method: "GET",
     url: "https://www.emojidex.com/api/v1/utf_emoji"
-  }).done(function(moji){
-    return moji
+  }).done(function(data){
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].code === keyword) {
+        $('h1#'+keyword).html(data[i].moji)
+      }
+    };
   })
 }
 
-
+function callback(data){
+  return data
+}
 
 function displayGroups(res) {
   var groups = res.groups;
@@ -42,21 +36,21 @@ function displayGroups(res) {
     $('.homepage').append(
       '<div class="col s12 m6 l4">' +
       '<div class="card">' +
-          '<div class="card-image waves-effect waves-block waves-light">' +
-            '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
-          '</div>' +
-          '<div class="card-content">' +
-            '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
-            '<p><a href="/" id="' + id + '">View Group</a></p>' +
-          '</div>' +
-          '<div class="card-reveal">' +
-            '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-            '<p>' + getEmoji(groups[i].emojimage) + '</p>' +
-          '</div>' +
-        '</div>' +
-      '</div>'
-    );
+      '<div class="card-image waves-effect waves-block waves-light">' +
+      '<h1 class="emojimage" id='+groups[i].emojimage+'><h1>' +
+      '</div>' +
+      '<div class="card-content">' +
+      '<span class="card-title activator grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><span></span><i class="fa fa-arrow-up"></i></i></span>' +
+      '<p><a href="/" id="' + id + '">View Group</a></p>' +
+      '</div>' +
+      '<div class="card-reveal">' +
+      '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
+      '<p></p>' +
+      '</div>' +
+      '</div>' +
+      '</div>');
     $("#" + id).on("click", showGroupPage);
+    getEmoji(groups[i].emojimage)
   }
 }
 
@@ -82,20 +76,20 @@ function addGroupToHomepage(req) {
   $('.homepage').append(
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
-        '<div class="card-image waves-effect waves-block waves-light">' +
-          '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
-        '</div>' +
-        '<div class="card-content">' +
-          '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
-          '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
-        '</div>' +
-        '<div class="card-reveal">' +
-          '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-          '<p>' + getEmoji(req.emojimage) + '</p>' +
-        '</div>' +
-      '</div>' +
+    '<div class="card-image waves-effect waves-block waves-light">' +
+    '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
+    '</div>' +
+    '<div class="card-content">' +
+    '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
+    '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
+    '</div>' +
+    '<div class="card-reveal">' +
+    '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
+    '<p id='+groups[i].emojimage+'></p>' +
+    '</div>' +
+    '</div>' +
     '</div>'
-  );
+    );
   $("#newgroup").hide();
   $("#groups").show();
 }
@@ -114,19 +108,19 @@ function displayPolls(req) {
 
   for (i = 0; i < groupMembers.length; i++) {
 
-  $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
-    )
-}
+    $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
+      )
+  }
 
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
     $("#poll-feed").prepend(
       '<li>' +
-        '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
-        '<div class="collapsible-body"><p>' + responseForm(polls[i].response) + '</p></div>' +
+      '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
+      '<div class="collapsible-body"><p>' + '</p></div>' +
       '</li>'
-    )
+      )
   }
 }
 
@@ -142,10 +136,10 @@ function submitPoll() {
 function addPoll(req, res) {
   $("#poll-feed").prepend(
     '<li>' +
-      '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
-      '<div class="collapsible-body"><p>' + responseForm(req.response) + '</p></div>' +
+    '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
+    '<div class="collapsible-body"><p>' + '</p></div>' +
     '</li>'
-  )
+    )
   $("#newpoll").hide();
   $("#group").show();
 }

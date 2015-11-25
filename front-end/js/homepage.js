@@ -77,9 +77,13 @@ function displayPolls(req) {
   $("#poll-form").show();
   $("#groupId").val(req.group._id);
 
-  console.log("Group members: " + req.groupMembers);
+  var groupMembers = req.groupMembers;
 
-  $(".group-members").html("Group members will go here");
+  for (i = 0; i < groupMembers.length; i++) {
+
+  $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
+    )
+}
 
   var polls = req.group.polls;
 

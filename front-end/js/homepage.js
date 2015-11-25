@@ -1,6 +1,6 @@
 function showHomepage(data) {
   $(".homepage").show();
-  
+
   var user = currentUser()
   var id = user._id;
   var method = "get";
@@ -38,7 +38,7 @@ function displayGroups(res) {
 function showGroupPage() {
   event.preventDefault();
   // console.log("this is this at the point of show group " + req);
-  id = $(this).attr('id');
+  var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
@@ -70,15 +70,21 @@ function addGroupToHomepage(req) {
       '</div>' +
     '</div>'
   );
+  $("#newgroup").hide();
+  $("#groups").show();
+
 }
 
 function displayPolls(req) {
-  $(".homepage").hide();
-  $(".group-page").show();
-  $("#poll-form").show();
+  $("#groups").hide();
+  $("#group").show();
+
+  // $(".homepage").hide();
+  // $(".group-page").show();
+  // $("#poll-form").show();
   $("#groupId").val(req.group._id);
-  $(".group-members").show();
-  $("#poll-feed").show();
+  // $(".group-members").show();
+  // $("#poll-feed").show();
   var groupMembers = req.groupMembers;
 
   for (i = 0; i < groupMembers.length; i++) {
@@ -115,6 +121,8 @@ function addPoll(req, res) {
       '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
     '</li>'
   )
+  $("#newpoll").hide();
+  $("#group").show();
 }
 
 

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>VibeRate</title>
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <!--<script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
@@ -26,35 +26,45 @@
     </div>
   </nav>
 
-
-<!--   <h1>Login Form</h1>
-  <h1>Register Form</h1>
-  <h1>New Group Form</h1>
-  <h1>Groups List</h1>
-  <h1>Groups Show</h1>
-  <h1>New Poll Form</h1>
-  <h1>Add User to Group Form</h1>
-  <h1>List of Users in Group</h1>
-  <h1>List of Polls</h1>
-  <h1>Poll Show</h1>
-  <h1>Add Response Form</h1>
- -->
+  <div class="hide alert alert-danger" role="alert"></div>
 
   <div class="container">
 
-    <div class="hide alert alert-danger" role="alert"></div>
-
-    <div class="row form-section">
-      <h2>Get a sense of the vibe.</h2>
-      <h3>Ask groups of friends to rate your questions.</h3>
-      <h4>Register to ask a question</h4>
-      <form class="col s12" id="register" method="post" action="/register">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="username" name="username" type="text">
-            <label for="username">Username</label>
+    <section id="register">
+      <div class="row form-section">
+        <h2>Get a sense of the vibe.</h2>
+        <h3>Ask groups of friends to rate your questions.</h3>
+        <h4>Register to ask a question</h4>
+        <form class="col s12 register" method="post" action="/register">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="username" name="username" type="text">
+              <label for="username">Username</label>
+            </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" name="email" type="text">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" name="password" type="password">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="submit" value="register" class="btn" id="submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="login">
+      <form class="col s12 login" method="post" action="/login">
         <div class="row">
           <div class="input-field col s12">
             <input id="email" name="email" type="text">
@@ -69,122 +79,106 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="submit" value="register" class="btn" id="submit">
+            <input type="submit" value="login" class="btn" id="submit">
           </div>
         </div>
       </form>
+    </section>
 
-<!--     <div class="row form-section">
-    <form action="/upload" enctype="multipart/form-data"> 
-      <input type="file" name="file" id="file" />
-      <button type="submit">upload</button> 
-    </form> 
-  </div> -->
+    <!-- GROUP SHOW PAGE -->
 
-  <form class="col s12" id="login" method="post" action="/login">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" name="email" type="text">
-        <label for="email">Email</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" name="password" type="password">
-        <label for="password">Password</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input type="submit" value="login" class="btn" id="submit">
-      </div>
-    </div>
-  </form>
-</div>
+    <section id="members">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="fa fa-arrow-down"></i>Group Members</div>
+          <div class="collapsible-body"><p id="listed-group-members"></p></div>
+        </li>
+      </ul>
+    </section>
 
+    <section id="newmember">
+      <form class="col s12 new-member" method="post" action="/groups">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="group-name" name="name" type="text">
+            <label for="group-name">Group Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="group-description" name="description" type="text">
+            <label for="group-description">Group Description</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" value="new-group" class="btn" id="submit">
+          </div>
+        </div>
+      </form>
+    </section>
 
-<!-- GROUP SHOW PAGE -->
+    <section id="newgroup" class="row">
+      <form class="col s12 new-group" method="post" action="/groups">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="group-name" name="name" type="text">
+            <label for="group-name">Group Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="group-description" name="description" type="text">
+            <label for="group-description">Group Description</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" value="new-group" class="btn" id="submit">
+          </div>
+        </div>
+      </form>
+    </section>
 
-<div class="group-members">
-  <ul>
-    <li><a href="#">Ask a new question</a></li>
-    <li><a href="#">Add Member</a></li>
-    <li><a href="#">Group Members</a></li>
-  </ul>
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="fa fa-arrow-down"></i>Group Members</div>
-      <div class="collapsible-body"><p id="listed-group-members"></p></div>
-      <div class="add-user-form">Here be the form to add new user to a group.</div>
-    </li>
-  </ul>
-</div>
+    <section id="groups" class="row homepage">
+      <div class="col s12 m6 l4">
+        <!-- Where dem groups go -->
+      </div>    
+    </section>
 
+    <section id="group" class="row">
+      <ul>
+        <li><a href="#" class="newpoll-link btn">Add Poll</a></li>
+        <li><a href="#" class="newmember-link btn">Add Member</a></li>
+        <li><a href="#" class="members-link btn">View Members</a></li>
+      </ul>
+      <ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
+      </ul>
+    </section>
 
-<div class="row new-poll-form form-section" id="poll-form">
-  <form class="col s12" id="newpoll" method="post" action="/polls">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="question" name="question" type="text" placeholder="What's your vibe on:">
-        <label for="question">Question</label>
-      </div>
-      <div class="input-field col s12">
-        <input id="groupId" name="groupId" type="hidden">
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input type="submit" value="add poll" class="btn" id="submit">
-      </div>
-    </div>
-  </form>
-</div>
+    <section id="newpoll" class="row">
+      <form class="col s12 newpoll" method="post" action="/polls">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="question" name="question" type="text" placeholder="What's your vibe on:">
+            <label for="question">Question</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="groupId" name="groupId" type="hidden">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" value="add poll" class="btn" id="submit">
+          </div>
+        </div>
+      </form>
+    </section>
 
-
-<div id="groups" class="row homepage">
-  <div class="col s12 m6 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="http://materializecss.com/images/office.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Create New Group<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>
-        <!--       <p><a href="#">This is a link</a></p> -->
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Creating New Group<i class="material-icons right"><i class="fa fa-arrow-down"></i></i></span>
-        <p>
-          <form class="col s12" id="new-group" method="post" action="/groups">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="group-name" name="name" type="text">
-                <label for="group-name">Group Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="group-description" name="description" type="text">
-                <label for="group-description">Group Description</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input type="submit" value="new-group" class="btn" id="submit">
-              </div>
-            </div>
-          </form>
-        </p>
-      </div>
-    </div>
   </div>
-</div>
 
 
-<ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
-</ul>
-
-
-<!-- THIS IS THE SOCKET GROUP FEED -->
+  <!-- THIS IS THE SOCKET GROUP FEED -->
 <!--   <div class="socket">
     <ul id="messages"></ul>
     <form action="">

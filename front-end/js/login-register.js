@@ -1,16 +1,14 @@
 $(init);
 
 function init() {
-  $("#login, #register").on("submit", submitForm);
-  $("#new-group").on("submit", createNewGroup);
-  $("#newpoll").on("submit", submitPoll);
+  $(".login, .register").on("submit", submitForm);
+  $(".new-group").on("submit", createNewGroup);
+  $(".newpoll").on("submit", submitPoll);
+
 
   $(".logout-link").on("click", logout);
-  $(".login-link, .register-link, .groups-link").on("click", showPage);
-  $("#register").hide();
-  $(".homepage").hide();
-  $("#poll-form").hide();
-  $(".group-members").hide();
+  $(".login-link, .register-link, .groups-link, .members-link, .newgroup-link, .newpoll-link, .newmember-link").on("click", showPage);
+
   hideErrors();
   checkLoginState();
 }
@@ -25,10 +23,10 @@ function checkLoginState() {
 
 function showPage() {
   event.preventDefault();
-  var linkClass = $(this).attr("class").split("-")[0];
-  $('#register').hide();
-  $('#login').hide();
 
+  var linkClass = $(this).attr("class").split("-")[0];
+  console.log(linkClass);
+  $("section").hide();
   return $("#" + linkClass).show();
 }
 
@@ -58,17 +56,16 @@ function displayErrors(data) {
 function loggedInState() {
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
-  $("#poll-form").hide();
+  $("section").hide();
+  $("#groups").show();
   showHomepage();
 }
 
 function loggedOutState() {
   $(".logged-out, .form-section").show();
-  $("#poll-form").hide();
   $(".logged-in").hide();
-  $(".homepage").hide();
-  $(".group-members").hide();
-  $("#poll-feed").hide();
+  $("section").hide();
+  $("#register").show();
 }
 
 function authenticationSuccessful(data) {

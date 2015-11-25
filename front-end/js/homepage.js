@@ -112,7 +112,7 @@ function displayPolls(req) {
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
-    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form></section>';
+    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + req.rating + '</h2></section>';
 
     $("#poll-feed").prepend(
       '<li>' +
@@ -130,9 +130,9 @@ function setResponseListeners() {
   });
 
   $('body').on('click', 'form.newresponse label', function(){
-      var userRating = $(this).context.previousSibling.value;
-      console.log(userRating);
-      submitResponse(userRating);
+      var rating = $(this).context.previousSibling.value;
+      var id = $(this).context.parentElement.parentElement.attributes.id.value;
+      submitResponse(rating, id);
     }
   );
 }
@@ -148,7 +148,7 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form></section>';
+  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + req.rating + '</h2></section>';
 
   $("#poll-feed").prepend(
     '<li>' +
@@ -162,25 +162,19 @@ function addPoll(req, res) {
 }
 
 
-function submitResponse(rating) {
-  var pollId = getPollId();
+function submitResponse(rating, id) {
   event.preventDefault();
-  console.log(rating);
   var method = "patch";
-  var url    = "http://localhost:3000/api/polls/" + "poll id" + "/response";
+  var url    = "http://localhost:3000/api/polls/" + id + "/response";
   var data   = rating;
 
   return ajaxRequest(method, url, data, addResponse); 
 }
 
-function getPollId() {
-
-}
-
 function addResponse(req, res) {
   event.preventDefault();
 
-  console.log("jessica christ");
+  console.log("response request" + req.body);
 }
 
 
@@ -191,7 +185,6 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
-    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

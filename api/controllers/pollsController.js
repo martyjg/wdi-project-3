@@ -6,6 +6,7 @@ var Response = require('../models/response')
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
   poll.created_by = currentUser;
+  poll.rating = 0;
 
   poll.save(function(err, poll) {
     if (err) return res.status(500).send(err);
@@ -52,6 +53,7 @@ function pollsResponsesCreate(req, res){
     poll.responses.push(response)
     poll.save()
 
+    console.log("response added to " + poll);
     res.status(200).send(poll);
   });
 }

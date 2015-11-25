@@ -27,7 +27,6 @@ function showPage() {
   event.preventDefault();
 
   var linkClass = $(this).attr("class").split("-")[0];
-  console.log(linkClass);
   $("section").hide();
   return $("#" + linkClass).show();
 }

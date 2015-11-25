@@ -4,9 +4,11 @@
   <title>VibeRate</title>
   <!--<script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
   <script type="text/javascript" src="./js/response.js"></script>
+  <script type="text/javascript" src="./js/typeahead-search.js"></script>
   <script type="text/javascript" src="./js/socket.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
@@ -97,18 +99,18 @@
       </ul>
     </section>
 
+
+
+
+
     <section id="newmember">
       <form class="col s12 new-member" method="post" action="/groups">
         <div class="row">
           <div class="input-field col s12">
-            <input id="group-name" name="name" type="text">
-            <label for="group-name">Group Name</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="group-description" name="description" type="text">
-            <label for="group-description">Group Description</label>
+            <div id="the-basics">
+              <input class="typeahead" type="text" placeholder="Enter user name" id="member-name">
+              <label for="member-name">Add New Member</label>
+            </div>
           </div>
         </div>
         <div class="row">

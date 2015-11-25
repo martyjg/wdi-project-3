@@ -98,7 +98,7 @@ function displayPolls(req) {
     $("#poll-feed").prepend(
       '<li>' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
-        '<div class="collapsible-body"><p>' + responseForm(polls[i].response) + '</p></div>' +
+        '<div class="collapsible-body"><p></p></div>' +
       '</li>'
     )
   }
@@ -117,7 +117,7 @@ function addPoll(req, res) {
   $("#poll-feed").prepend(
     '<li>' +
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
-      '<div class="collapsible-body"><p>' + responseForm(req.response) + '</p></div>' +
+      '<div class="collapsible-body"><p></p></div>' +
     '</li>'
   )
   $("#newpoll").hide();

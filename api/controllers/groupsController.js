@@ -79,7 +79,6 @@ function groupsDelete(req, res) {
   });
 };
 
-
 module.exports = {
   groupsCreate: groupsCreate,
   groupsShow:   groupsShow,

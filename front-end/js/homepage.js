@@ -44,10 +44,34 @@ function showGroupPage() {
 
 function createNewGroup() {
   event.preventDefault();
-  console.log(this);
+  var method = $(this).attr("method");
+  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var data   = $(this).serialize();
+  return ajaxRequest(method, url, data, addGroupToHomepage);
 }
 
-function displayPolls(req, res) {
+function addGroupToHomepage(req) {
+  console.log(req);
+  $('.homepage').append(
+    '<div class="col s12 m6 l4">' +
+    '<div class="card">' +
+        '<div class="card-image waves-effect waves-block waves-light">' +
+          '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
+        '</div>' +
+        '<div class="card-content">' +
+          '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
+          '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
+        '</div>' +
+        '<div class="card-reveal">' +
+          '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
+          '<p>' + req.description + '</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+  );
+}
+
+function displayPolls(req) {
   $(".homepage").hide();
   $(".group-page").show();
   $("#poll-form").show();

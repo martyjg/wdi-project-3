@@ -42,9 +42,9 @@ router.route('/polls/:id')
 
 
 
-// // RESPONSE ROUTE HANDLER
-// router.route('/responses')
-//   .post(responsesController.responsesCreate)
+// RESPONSE ROUTE HANDLER
+router.route('/responses')
+  .post(responsesController.responsesCreate)
 
   
 module.exports = router

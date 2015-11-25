@@ -4,6 +4,7 @@ function init() {
   $(".login, .register").on("submit", submitForm);
   $(".new-group").on("submit", createNewGroup);
   $(".newpoll").on("submit", submitPoll);
+  $(".newresponse").on("submit", submitResponse);
 
 
   $(".logout-link").on("click", logout);

@@ -109,8 +109,6 @@ function addPoll(req, res) {
 }
 
 
-
-
 function ajaxRequest(method, url, data, callback) {
   return $.ajax({
     method: method,

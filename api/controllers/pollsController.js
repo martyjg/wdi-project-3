@@ -44,7 +44,8 @@ function pollsDelete(req, res) {
 
 function pollsResponsesCreate(req, res){
   var id = req.params.id;
-  var response = new Response(req.body)
+  var response = new Response(req.body);
+  console.log(response);
 
   Poll.findById({ _id: id }, function(err, poll) {
     if (err) return res.status(500).send(err);

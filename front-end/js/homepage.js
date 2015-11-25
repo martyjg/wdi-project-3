@@ -85,7 +85,7 @@ function addGroupToHomepage(req) {
     '</div>' +
     '<div class="card-reveal">' +
     '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-down"></i></span>' +
-    '<p id='+groups[i].emojimage+'></p>' +
+    '<p id='+ req.emojimage+'></p>' +
     '</div>' +
     '</div>' +
     '</div>'
@@ -110,9 +110,11 @@ function displayPolls(req) {
 }
   
   var polls = req.group.polls;
+  console.log(polls);
+  var rating = "";
 
   for (var i = 0; i < polls.length; i++) {
-    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + req.rating + '</h2></section>';
+    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + rating + '</h2></section>';
 
     $("#poll-feed").prepend(
       '<li>' +
@@ -161,22 +163,19 @@ function addPoll(req, res) {
   $("#group").show();
 }
 
-
 function submitResponse(rating, id) {
   event.preventDefault();
   var method = "patch";
   var url    = "http://localhost:3000/api/polls/" + id + "/response";
-  var data   = rating;
+  var data   = { rating: rating };
 
   return ajaxRequest(method, url, data, addResponse); 
 }
 
-function addResponse(req, res) {
+function addResponse(res) {
   event.preventDefault();
-
-  console.log("response request" + req.body);
+  console.log(res.responses);
 }
-
 
 function ajaxRequest(method, url, data, callback) {
   return $.ajax({
@@ -185,6 +184,7 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
+    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

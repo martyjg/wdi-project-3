@@ -6,6 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
+  <script type="text/javascript" src="./js/response.js"></script>
   <script type="text/javascript" src="./js/socket.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
@@ -31,39 +32,39 @@
   <div class="container">
 
     <section id="register">
-      <div class="row form-section">
-        <h2>Get a sense of the vibe.</h2>
-        <h3>Ask groups of friends to rate your questions.</h3>
-        <h4>Register to ask a question</h4>
-        <form class="col s12 register" method="post" action="/register">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="username" name="username" type="text">
-              <label for="username">Username</label>
-            </div>
+      <h2>Get a sense of the vibe.</h2>
+      <h3>Ask groups of friends to rate your questions.</h3>
+      <h4>Register to ask a question</h4>
+      <form class="col s12 register" method="post" action="/register">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" name="username" type="text">
+            <label for="username">Username</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" name="email" type="text">
-              <label for="email">Email</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" name="email" type="text">
+            <label for="email">Email</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" name="password" type="password">
-              <label for="password">Password</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" name="password" type="password">
+            <label for="password">Password</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input type="submit" value="register" class="btn" id="submit">
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" value="register" class="btn" id="submit">
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
 
     <section id="login">
+      <h2>Get a sense of the vibe.</h2>
+      <h3>Ask groups of friends to rate your questions.</h3>
       <form class="col s12 login" method="post" action="/login">
         <div class="row">
           <div class="input-field col s12">
@@ -174,22 +175,7 @@
         </div>
       </form>
     </section>
-
   </div>
 
-
-  <!-- THIS IS THE SOCKET GROUP FEED -->
-<!--   <div class="socket">
-    <ul id="messages"></ul>
-    <form action="">
-      <input type="radio" name="cool" value="cool" checked>😎
-      <input type="radio" name="turd" value="rubbish">💩
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-  </div> -->
-
-
-
-</div>
 </body>
 </html>

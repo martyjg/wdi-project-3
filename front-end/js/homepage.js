@@ -72,7 +72,6 @@ function addGroupToHomepage(req) {
   );
   $("#newgroup").hide();
   $("#groups").show();
-
 }
 
 function displayPolls(req) {
@@ -99,7 +98,7 @@ function displayPolls(req) {
     $("#poll-feed").prepend(
       '<li>' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
-        '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+        '<div class="collapsible-body"><p>' + responseForm(polls[i].response) + '</p></div>' +
       '</li>'
     )
   }
@@ -118,7 +117,7 @@ function addPoll(req, res) {
   $("#poll-feed").prepend(
     '<li>' +
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
-      '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+      '<div class="collapsible-body"><p>' + responseForm(req.response) + '</p></div>' +
     '</li>'
   )
   $("#newpoll").hide();

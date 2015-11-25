@@ -54,7 +54,7 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  $(".logged-out, .form-section").hide();
+  $(".logged-out").hide();
   $(".logged-in").show();
   $("section").hide();
   $("#groups").show();

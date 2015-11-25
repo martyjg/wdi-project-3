@@ -10,7 +10,22 @@ function groupsCreate(req, res) {
     if (err) return res.status(500).json(err);
     console.log("group created" + group);
     res.status(200).json(group);
-  })
+  });
+
+  User.findOneAndUpdate({ 
+    username: currentUser.username
+  }, { 
+    $addToSet: { groups: group._id }
+  }, function(err, user) {
+    if (err) return res.status(500).json(err);
+    if (!user) return res.status(404).json(err);
+
+    console.log("user " + user + " added to group");
+
+    res.status(204).json({ message: "Current user was added to the new group" }); 
+  });
+
+  console.log(group);
 };
 
 

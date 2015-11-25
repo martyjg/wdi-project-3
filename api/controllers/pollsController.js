@@ -4,7 +4,6 @@ var Group  = require('../models/group');
 
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
-  console.log(req.body);
   poll.created_by = currentUser;
   poll.save(function(err, poll) {
     if (err) return res.status(500).send(err);
@@ -17,7 +16,6 @@ function pollsCreate(req, res) {
     group.polls.push(poll);
       if (err) return res.status(500).json({ message: "Not saving"});
       group.save();
-      console.log(group);
   })
 }
 

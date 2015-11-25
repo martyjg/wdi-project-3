@@ -9,10 +9,8 @@ function usersIndex(req, res) {
 }
 
 function usersShow(req, res){
-  console.log("linked to controller");
   User.findById(req.params.id).populate("groups").exec(function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
-    console.log(user.groups);
     res.status(200).json(user);
   });
 }

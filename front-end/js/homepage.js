@@ -1,7 +1,8 @@
 function showHomepage(data) {
   $(".homepage").show();
 
-  var id = data.user._id;
+  var user = currentUser()
+  var id = user._id;
   var method = "get";
   var url = "http://localhost:3000/api/users/" + id;
   return ajaxRequest(method, url, null, displayGroups);
@@ -62,7 +63,8 @@ function displayGroups(res) {
 
 function showGroupPage() {
   event.preventDefault();
-  id = $(this).attr('id');
+  // console.log("this is this at the point of show group " + req);
+  var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   return ajaxRequest(method, url, null, displayPolls);
@@ -77,7 +79,6 @@ function createNewGroup() {
 }
 
 function addGroupToHomepage(req) {
-  console.log(req);
   $('.homepage').append(
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
@@ -95,22 +96,35 @@ function addGroupToHomepage(req) {
       '</div>' +
     '</div>'
   );
+  $("#newgroup").hide();
+  $("#groups").show();
 }
 
 function displayPolls(req) {
-  $(".homepage").hide();
-  $(".group-page").show();
-  $("#poll-form").show();
-  $("#groupId").val(req._id);
-  console.log(req);
+  $("#groups").hide();
+  $("#group").show();
 
-  var polls = req.polls;
+  // $(".homepage").hide();
+  // $(".group-page").show();
+  // $("#poll-form").show();
+  $("#groupId").val(req.group._id);
+  // $(".group-members").show();
+  // $("#poll-feed").show();
+  var groupMembers = req.groupMembers;
+
+  for (i = 0; i < groupMembers.length; i++) {
+
+  $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
+    )
+}
+
+  var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
     $("#poll-feed").prepend(
       '<li>' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
-        '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+        '<div class="collapsible-body"><p>' + responseForm(polls[i].response) + '</p></div>' +
       '</li>'
     )
   }
@@ -126,18 +140,15 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  $("#poll-feed").append(
+  $("#poll-feed").prepend(
     '<li>' +
-      '<div class="collapsible-header"><i class="material-icons"></i>' + req.question + '</div>' +
-      '<div class="collapsible-body"><p>' + 'blahblahblah all the stuff we havent done yet' + '</p></div>' +
+      '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
+      '<div class="collapsible-body"><p>' + responseForm(req.response) + '</p></div>' +
     '</li>'
   )
+  $("#newpoll").hide();
+  $("#group").show();
 }
-
-
-// function groupImage(req, res) {
-
-// }
 
 
 

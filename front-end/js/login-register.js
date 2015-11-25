@@ -10,6 +10,7 @@ function init() {
   $("#register").hide();
   $(".homepage").hide();
   $("#poll-form").hide();
+  $(".group-members").hide();
   hideErrors();
   checkLoginState();
 }
@@ -67,6 +68,8 @@ function loggedOutState() {
   $("#poll-form").hide();
   $(".logged-in").hide();
   $(".homepage").hide();
+  $(".group-members").hide();
+  $("#poll-feed").hide();
 }
 
 function authenticationSuccessful(data) {

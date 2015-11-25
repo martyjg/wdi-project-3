@@ -1,5 +1,6 @@
 var Poll   = require('../models/poll');
 var Group  = require('../models/group');
+var Response = require('../models/response')
 
 
 function pollsCreate(req, res) {
@@ -14,7 +15,7 @@ function pollsCreate(req, res) {
   var id = req.body.groupId;
 
   Group.findById({_id: id }, function(err, group) {
-    group.polls.push(poll);
+      group.polls.push(poll);
       if (err) return res.status(500).json({ message: "Not saving"});
       group.save();
   })
@@ -23,7 +24,7 @@ function pollsCreate(req, res) {
 function pollsShow(req, res) {
   var id = req.params.id;
 
-  Poll.findById({ _id: id }, function(err, group) {
+  Poll.findById({ _id: id }, function(err, poll) {
     if (err) return res.status(500).send(err);
     if (!poll) return res.status(404).send(err);
 
@@ -40,8 +41,24 @@ function pollsDelete(req, res) {
   });
 };
 
+function pollsResponsesCreate(req, res){
+  var id = req.params.id;
+  var response = new Response(req.body)
+
+  Poll.findById({ _id: id }, function(err, poll) {
+    if (err) return res.status(500).send(err);
+    if (!poll) return res.status(404).send(err);
+
+    poll.responses.push(response)
+    poll.save()
+
+    res.status(200).send(poll);
+  });
+}
+
 module.exports = {
   pollsCreate: pollsCreate,
   pollsShow:   pollsShow,
-  pollsDelete: pollsDelete
+  pollsDelete: pollsDelete,
+  pollsResponsesCreate: pollsResponsesCreate
 }

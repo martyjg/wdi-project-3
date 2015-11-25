@@ -99,12 +99,8 @@ function displayPolls(req) {
   $("#groups").hide();
   $("#group").show();
 
-  // $(".homepage").hide();
-  // $(".group-page").show();
-  // $("#poll-form").show();
   $("#groupId").val(req.group._id);
-  // $(".group-members").show();
-  // $("#poll-feed").show();
+
   var groupMembers = req.groupMembers;
 
   for (i = 0; i < groupMembers.length; i++) {
@@ -116,16 +112,31 @@ function displayPolls(req) {
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
-    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><input id="submit" name="minus2" type="submit" class="btn minus2" value="-2" ><input id="submit" name="minus1" type="submit" class="btn minus1" value="-1" ><input id="submit" name="zero" type="submit" class="btn zero" value="0" ><input id="submit" name="plus1" type="submit" class="btn plus1" value="+1" ><input id="submit" name="plus2" type="submit" class="btn plus2" value="+2" ></form></section>';
+    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form></section>';
 
     $("#poll-feed").prepend(
       '<li>' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + polls[i].question + '</div>' +
         '<div class="collapsible-body"><p>' + responseForm + '</p></div>' +
       '</li>'
-      )
+    )
   }
 }
+
+function setResponseListeners() {
+  $('.newresponse input').click(function () {
+    $(".newresponse span").removeClass('checked');
+    $(this).parent().addClass('checked');
+  });
+
+  $('body').on('click', 'form.newresponse label', function(){
+      var userRating = $(this).context.previousSibling.value;
+      console.log(userRating);
+      submitResponse(userRating);
+    }
+  );
+}
+
 
 function submitPoll() {
   event.preventDefault();
@@ -137,30 +148,38 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><input id="submit" name="minus2" type="submit" class="btn minus2" value="-2" ><input id="submit" name="minus1" type="submit" class="btn minus1" value="-1" ><input id="submit" name="zero" type="submit" class="btn zero" value="0" ><input id="submit" name="plus1" type="submit" class="btn plus1" value="+1" ><input id="submit" name="plus2" type="submit" class="btn plus2" value="+2" ></form></section>';
+  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form></section>';
 
   $("#poll-feed").prepend(
     '<li>' +
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i>' + req.question + '</div>' +
       '<div class="collapsible-body"><p id="' + req._id + '">' + responseForm + '</p></div>' +
     '</li>'
-    )
+  )
+
   $("#newpoll").hide();
   $("#group").show();
 }
 
 
-function submitResponse() {
+function submitResponse(rating) {
+  var pollId = getPollId();
   event.preventDefault();
-  console.log("hiya");
-  var method = $(this).attr("method");
-  var url    = "http://localhost:3000/api" + $(this).attr("action");
-  var data   = $(this).serialize();
+  console.log(rating);
+  var method = "patch";
+  var url    = "http://localhost:3000/api/polls/" + "poll id" + "/response";
+  var data   = rating;
 
   return ajaxRequest(method, url, data, addResponse); 
 }
 
+function getPollId() {
+
+}
+
 function addResponse(req, res) {
+  event.preventDefault();
+
   console.log("jessica christ");
 }
 

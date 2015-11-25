@@ -1,7 +1,8 @@
 function showHomepage(data) {
   $(".homepage").show();
-
-  var id = data.user._id;
+  
+  var user = currentUser()
+  var id = user._id;
   var method = "get";
   var url = "http://localhost:3000/api/users/" + id;
   return ajaxRequest(method, url, null, displayGroups);

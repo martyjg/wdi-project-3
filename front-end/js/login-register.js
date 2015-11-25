@@ -6,7 +6,7 @@ function init() {
   $("#newpoll").on("submit", submitPoll);
 
   $(".logout-link").on("click", logout);
-  $(".login-link, .register-link").on("click", showPage);
+  $(".login-link, .register-link, .groups-link").on("click", showPage);
   $("#register").hide();
   $(".homepage").hide();
   $("#poll-form").hide();
@@ -41,7 +41,6 @@ function submitForm() {
   return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful);
 }
 
-
 function logout() {
   event.preventDefault();
   localStorage.clear();
@@ -60,7 +59,7 @@ function loggedInState() {
   $(".logged-out, .form-section").hide();
   $(".logged-in").show();
   $("#poll-form").hide();
-
+  showHomepage();
 }
 
 function loggedOutState() {
@@ -74,7 +73,6 @@ function loggedOutState() {
 
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);
-  showHomepage(data);
   setCurrentUser(data.token);
   return checkLoginState();
 }

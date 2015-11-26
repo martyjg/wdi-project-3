@@ -151,9 +151,9 @@ function setResponseListeners() {
   });
 
   $('body').on('click', 'form.newresponse label', function(){
-      var rating = $(this).context.previousSibling.value;
-      var comment = $(this).context.parentElement.parentElement.firstChild.firstChild.value;
-      var id = $(this).context.parentElement.parentElement.attributes.id.value;
+      var rating  = $(this).prev().val();
+      var comment = $(this).parents("form").find("input[name=comment]").val();
+      var id      = $(this).parents("form").attr("id");
       submitResponse(rating, comment, id);
     }
   );

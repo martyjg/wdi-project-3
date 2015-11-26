@@ -2,8 +2,7 @@
 
 body {
   font-family: 'Abel', sans-serif;
-  color: black;
-  background-color: #CFD8DC;
+  color: white;
 }
 
 h1, h2, h3, h4, p, a {
@@ -11,20 +10,21 @@ h1, h2, h3, h4, p, a {
 }
 
 nav {
-  background: white;
-  border-bottom: 2px solid black;
+  border-bottom: 2px #2bbbad;
+  background-color: black;
+  z-index: 2;
 }
 
 nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
   font-style: italic;
-  color: black;
+  color: #2bbbad;
 }
 
 nav ul a {
   font-size: 1.5rem;
-  color: black;
+  color: #2bbbad;
 }
 
 nav a {
@@ -32,10 +32,13 @@ nav a {
 }
 
 .btn {
-  color: black;
+  color: #2bbbad;
   background: none;
   box-shadow: none;
-  border: 2px solid black;
+  /*border: 2px solid;*/
+  border-style: solid;
+  border-width: thick;
+  border: #2bbbad;
   transition: 1000s ease-out;
 }
 
@@ -44,18 +47,18 @@ input[type=text], input[type=password]  {
 }
 
 .input-field label {
-  color: black;
+  color: white;
   font-size: 1.3em;
 }
 
 .input-field label.active {
-  color: black;
+  color: white;
 }
 
 /*  REMOVE SHADOW FROM BOX */
 
 .card, .collapsible-header, .collapsible-body {
-  border: 2px solid black;
+  border: 2px solid white;
   background-color: white;
 }
 
@@ -69,6 +72,7 @@ input[type=text], input[type=password]  {
 
 .nav-wrapper {
   margin: 0 auto;
+  border-bottom: 4px solid #2bbbad;
 }
 
 .emojimage {
@@ -101,7 +105,7 @@ input[type=text], input[type=password]  {
     width:30px;
     height:30px;
     text-align:center;
-    color:#FFF;
+    color: white;
     background:#ccc;
     font-size:30px;
     margin-right:2px;
@@ -117,3 +121,72 @@ input[type=text], input[type=password]  {
     color:#FFF;
 }
 
+
+/*Particles*/
+
+body {
+  margin: 0;
+  font-family: 'Abel', sans-serif;
+  color: white;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 0;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}

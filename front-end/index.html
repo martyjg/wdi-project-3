@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>VibeRate</title>
-  <!--<script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
@@ -19,24 +18,8 @@
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body> 
-<!--   <nav>
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">VibeRate</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/" class="newgroup-link logged-in">Create Group</a></li>
-        <li><a href="/" class="groups-link logged-in">Groups</a></li>
-        <li><a href="/" class="login-link logged-out">Login</a></li>
-        <li><a href="/" class="register-link logged-out">Register</a></li>
-        <li><a href="/" class="logout-link logged-in">Logout</a></li>
-      </ul>
-    </div>
-  </nav> -->
-
-
-  <!-- particles.js container -->
-  <div id="particles-js"></div>
-
-
+<!-- particles.js container -->
+<div id="particles-js"></div>
   <nav>
     <div class="nav-wrapper container">
       <a href="#!" class="brand-logo">VibeRate.</a>
@@ -121,7 +104,31 @@
 
     <!-- GROUP SHOW PAGE -->
 
+    <section id="grouppollsdisplay" class="row">
+      <ul>
+        <li><a href="#" class="members-link btn">View Members</a></li>
+      </ul>
+    </section>
+
+    <section id="groupmembersdisplay" class="row">
+      <ul>
+        <li><a href="#" class="newpoll-link btn">View Polls</a></li>
+      </ul>
+    </section>
+
     <section id="members">
+      <form class="col s12 new-member" method="put" action="/groups">  
+        <div class="row">
+          <div id="the-basics" class="col s12">
+            <input id="username" name="username" class="typeahead" type="text" placeholder="Add New Group Member">
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="row">
+            <input type="submit" value="new-member" class="btn" id="submit">
+          </div>
+        </div>
+      </form> 
       <ul class="collapsible" data-collapsible="accordion">
         <li>
           <div class="collapsible-header"><i class="fa fa-arrow-down"></i>Group Members</div>
@@ -130,28 +137,29 @@
       </ul>
     </section>
 
-
-    <section id="newmember">
-    </section>
-
-
-<!--     <section id="newmember">
-      <form class="col s12 new-member" method="post" action="/groups">
+    <section id="newpoll" class="row">
+      <form class="col s12 newpoll" method="post" action="/polls">
         <div class="row">
           <div class="input-field col s12">
-            <div id="the-basics">
-              <input class="typeahead" type="text" placeholder="Enter user name" id="member-name">
-              <label for="member-name">Add New Member</label>
-            </div>
+            <input id="question" name="question" type="text" placeholder="What's your vibe on:">
+            <label for="question">Question</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="groupId" name="groupId" type="hidden">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="submit" value="new-group" class="btn" id="submit">
+            <input type="submit" value="add poll" class="btn" id="submit">
           </div>
         </div>
       </form>
-    </section> -->
+    </section>
+
+    <section id="pollfeed">
+      <ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
+      </ul>
+    </section>
 
     <section id="newgroup" class="row">
       <form class="col s12 new-group" method="post" action="/groups">
@@ -187,17 +195,6 @@
       </div>    
     </section>
 
-    <section id="group" class="row">
-      <ul>
-        <li><a href="#" class="newpoll-link btn">Add Poll</a></li>
-        <li><a href="#" class="newmember-link btn">Add Member</a></li>
-        <li><a href="#" class="members-link btn">View Members</a></li>
-      </ul>
-      <ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
-      </ul>
-    </section>
-
-
 <!--     form class="col s12" id="new-group" method="post" action="/groups">
       <div class="row">
         <div class="input-field col s12">
@@ -224,27 +221,6 @@
       </div>
     </form> -->
 
-
-
-
-    <section id="newpoll" class="row">
-      <form class="col s12 newpoll" method="post" action="/polls">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="question" name="question" type="text" placeholder="What's your vibe on:">
-            <label for="question">Question</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="groupId" name="groupId" type="hidden">
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="submit" value="add poll" class="btn" id="submit">
-          </div>
-        </div>
-      </form>
-    </section>
   </div>
 
 </body>

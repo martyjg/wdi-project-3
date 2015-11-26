@@ -22,13 +22,9 @@ var substringMatcher = function(strs) {
 };
 
 function getUsersList() {
-  var allUsers = []
-
-
-  for (var i = 0; i < getUsers().responseJSON.users.length; i++) {
-    allUsers.push(getUsers().responseJSON.users[i].username)
-  };
-
+  var allUsers = getUsers().responseJSON.users.map(function(user) { 
+    return user.username 
+  })
 
   $('#the-basics .typeahead').typeahead({
     hint: true,
@@ -55,13 +51,19 @@ function submitNewMember() {
   event.preventDefault();
   var method = $(this).attr("method");
   var action = $(this).attr("action");
-  var groupId = $(this).context.id;
-  var url = "http://localhost:3000/api" + action + "/" + groupId + "/adduser";
+  var url    = "http://localhost:3000/api" + action + "/adduser"
+
+  // var groupId = $(this).context.id;
+  // var url = "http://localhost:3000/api" + action + "/" + groupId + "/adduser";
   var data = $(this).serialize();
-  return ajaxRequest(method, url, data, null, true);
+
+  return ajaxRequest(method, url, data, function(data){
+    $("#listed-group-members").prepend("<li>"+data.user.username+"</li>");
+  });
 }
 
 function listMembers(groupMembers) {
+  $("#listed-group-members").empty();
   for (i = 0; i < groupMembers.length; i++) {
     $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
       )

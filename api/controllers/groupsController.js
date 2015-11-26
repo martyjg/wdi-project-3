@@ -30,6 +30,7 @@ function groupsShow(req, res) {
       if (!group) return res.status(404).json(err);
 
       User.find({}, function(err, users) {
+        
         var groupMembers = [];
         for (i = 0; i < users.length; i++) {
           for (j = 0; j < users[i].groups.length; j++) {
@@ -39,6 +40,7 @@ function groupsShow(req, res) {
             };
           };
         };
+        
         res.status(200).json({ group: group, groupMembers: groupMembers});
       });
     });
@@ -72,7 +74,7 @@ function groupsShow(req, res) {
         if (err) return res.status(500).json(err);
         if (!user) return res.status(404).json(err);
 
-        res.status(204).json({ message: "User was added to the group" }); 
+        res.status(200).json({ message: "User was added to the group", user: user }); 
       });
     });
   }

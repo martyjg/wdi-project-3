@@ -46,14 +46,19 @@ function pollsDelete(req, res) {
 function pollsResponsesCreate(req, res){
   var id = req.params.id;
   var response = new Response(req.body);
+  response.comment = currentUser.username + " - " + req.body.comment;
   console.log(response);
+
+  // Poll.findByIdAndUpdate(id, { 
+  //   $addToSet: { responses: response } 
+  // }, function(err, poll) {
 
   Poll.findById({ _id: id }, function(err, poll) {
     if (err) return res.status(500).send(err);
     if (!poll) return res.status(404).send(err);
 
-    poll.responses.push(response)
-    poll.save()
+    // poll.responses.addToSet(response);
+    // poll.save();
 
     console.log("response added to " + poll);
     res.status(200).send(poll);

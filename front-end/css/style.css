@@ -9,9 +9,10 @@ html, body {
 
 body {
   font-family: 'Abel', sans-serif;
-  color: white;
   height: 100%;
   min-height: 100%;
+  color: black;
+  background-color: #9b59b6;
 }
 
 h1, h2, h3, h4, p, a {
@@ -19,9 +20,8 @@ h1, h2, h3, h4, p, a {
 }
 
 nav {
-  border-bottom: 2px #2bbbad;
-  background-color: black;
-  z-index: 2;
+  background: white;
+  /*  border-bottom: 2px solid black; */
 }
 
 nav .brand-logo {
@@ -29,15 +29,22 @@ nav .brand-logo {
   font-size: 3.2rem;
   font-style: italic;
   color: #2bbbad;
+  /*color: #EF8500;yellow*/
+  /*color: #813A9D;purple*/
+  color: #00C19E
 }
 
 nav ul a {
   font-size: 1.5rem;
-  color: #2bbbad;
+  color: black;
 }
 
 nav a {
   color: black;
+}
+
+.container {
+  margin-top: 15px;
 }
 
 .btn {
@@ -64,10 +71,16 @@ input[type=text], input[type=password]  {
   color: white;
 }
 
+/*STYLING CARDS ON GROUP SHOW*/
+
+.card .card-content p {
+  /*border: solid black 2px;*/
+  background-color: #9b59b6
+}
+
 /*  REMOVE SHADOW FROM BOX */
 
 .card, .collapsible-header, .collapsible-body {
-  border: 2px solid #2bbbad;
   background-color: white;
 }
 
@@ -81,20 +94,11 @@ input[type=text], input[type=password]  {
 
 .nav-wrapper {
   margin: 0 auto;
-  border-bottom: 4px solid #2bbbad;
 }
 
 .emojimage {
   text-align: center;
   font-size: 100px;
-  filter: saturate([ <10> | <50%> ]);
-  /*filter: opacity([ <10> | <100%> ])*/
-}
-
-.blur-me {
-  /*-webkit-filter: sepia(1);
-  filter: sepia(1);*/
-  filter: opacity([ <10> | <100%> ]);
 }
 
 /* IMPROVING POLL APPEARANCE */
@@ -106,11 +110,30 @@ input[type=text], input[type=password]  {
 
 /* stuff for response rating radio buttons*/
 
+#newresponse {
+  display: block;
+}
+
+.collapsible-body {
+  position: relative;
+}
+
 .newresponse {
   float:left;
   width:300px;
+  position: absolute;
+  top: 0;
 }
-.newresponse span { float:right; position:relative; }
+
+.newresponse span { 
+  float: left;
+  position:relative; 
+}
+
+.newresponse span:nth-child(1) { 
+  margin-left: 30px;
+}
+
 .newresponse span input {
   position:absolute;
   top:0px;
@@ -122,7 +145,7 @@ input[type=text], input[type=password]  {
   width:30px;
   height:30px;
   text-align:center;
-  color: white;
+  color:#FFF;
   background:#ccc;
   font-size:30px;
   margin-right:2px;
@@ -156,18 +179,18 @@ canvas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: #9b59b6;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  z-index: 0;
+  z-index: -1;
 }
 
 /* ---- stats.js ---- */
 
 .count-particles{
-  background: #000022;
+  background: #FFFC00;
   position: absolute;
   top: 48px;
   left: 0;

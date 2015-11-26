@@ -5,7 +5,6 @@ var passport          = require("passport");
 var usersController   = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
 var groupsController = require('../controllers/groupsController');
-var responsesController = require('../controllers/responsesController');
 var pollsController = require('../controllers/pollsController');
 
 // AUTHENTICATION ROUTE HANDLERS - (REGISTER ACTS AS USER-NEW & CREATE)

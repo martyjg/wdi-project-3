@@ -46,6 +46,7 @@ function pollsDelete(req, res) {
 function pollsResponsesCreate(req, res){
   var id = req.params.id;
   var response = new Response(req.body);
+  response.comment = currentUser.username + " - " + req.body.comment;
   console.log(response);
 
   Poll.findById({ _id: id }, function(err, poll) {

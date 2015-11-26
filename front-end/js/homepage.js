@@ -110,12 +110,9 @@ function displayPolls(req) {
 }
   
   var polls = req.group.polls;
-  console.log(polls);
 
   for (var i = 0; i < polls.length; i++) {
-    var ratings = polls[i].ratings;
-    console.log(ratings);
-    var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + polls[i].rating +'</h2></p>';
+    var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2 id="' + polls[i]._id + 'rating">?</h2></p>';
 
     $("#poll-feed").prepend(
       '<li class="poll">' +
@@ -152,7 +149,7 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  var responseForm = '<p id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + req.rating + '</h2></p>';
+  var responseForm = '<p id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2 id="' + req._id + 'rating">?</h2></p>';
 
   $("#poll-feed").prepend(
     '<li>' +
@@ -176,7 +173,13 @@ function submitResponse(rating, comment, id) {
 
 function addResponse(res) {
   event.preventDefault();
-  console.log(res.responses);
+  var totalRating = 0;
+  for (var i = 0; i < res.responses.length; i++) {
+    totalRating = totalRating + res.responses[i].rating;
+  }
+  var test = $("#" + res._id + "rating").text();
+  $("#" + res._id + "rating").text(totalRating);
+  console.log(test);
 }
 
 function ajaxRequest(method, url, data, callback) {
@@ -186,7 +189,6 @@ function ajaxRequest(method, url, data, callback) {
     data: data,
     beforeSend: setRequestHeader
   }).done(function(res) {
-    console.log(res);
     if (callback) return callback(res);    
   }).fail(function(data) {
     displayErrors();

@@ -78,6 +78,7 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
+  getUsersList();
   $(".logged-out").hide();
   $(".logged-in").show();
   $("section").hide();
@@ -91,10 +92,10 @@ function loggedOutState() {
   $(".logged-in").hide();
   $("section").hide();
   $("#register").show();
-
   showCanvas();
   $(setTimeout(hideCanvas, 5000));
-
+  $('.homepage').empty();
+  $("#poll-feed").empty();
 }
 
 function authenticationSuccessful(data) {

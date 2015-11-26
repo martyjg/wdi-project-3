@@ -28,12 +28,12 @@ function showCanvas() {
 }
 
 function hideCanvas() {
-  $("canvas, .logo").fadeOut(1000);
+  $("canvas, #particles-js ,.logo").fadeOut(1000);
   $(".register, .nav-wrapper").fadeIn(1000);
 }
 
 function forceHideCanvas() {
-  $("canvas, .logo").hide();
+  $("canvas, #particles-js, .logo").hide();
 
 }
 

@@ -112,8 +112,9 @@ function addGroupToHomepage(req) {
     '</div>'
     );
   $("#newgroup").hide();
+  $(".homepage").html('')
   $("#groups").show();
-
+  showHomepage();
 }
 
 function displayPolls(req) {

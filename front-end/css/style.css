@@ -74,6 +74,10 @@ input[type=text], input[type=password]  {
   border-bottom: 2px solid white;
 }
 
+.input-field input[type=text]:focus {
+  border-bottom: 2px solid white;
+}
+
 .input-field label {
   color: white;
   font-size: 1.3em;

@@ -12,14 +12,16 @@ h1, h2, h3, h4, p, a {
 
 nav {
   background: white;
-  border-bottom: 2px solid black;
-}
+/*  border-bottom: 2px solid black;
+*/}
 
 nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
   font-style: italic;
-  color: black;
+  /*color: #EF8500;yellow*/
+  /*color: #813A9D;purple*/
+  color: #00C19E
 }
 
 nav ul a {
@@ -59,14 +61,14 @@ input[type=text], input[type=password]  {
 /*STYLING CARDS ON GROUP SHOW*/
 
 .card .card-content p {
-  border: solid black 2px;
+  /*border: solid black 2px;*/
   background-color: #FFFC00
 }
 
 /*  REMOVE SHADOW FROM BOX */
 
 .card, .collapsible-header, .collapsible-body {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   background-color: white;
 }
 

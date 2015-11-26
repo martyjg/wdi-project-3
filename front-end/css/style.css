@@ -10,12 +10,20 @@ html, body {
 body {
   font-family: 'Montserrat Alternates', sans-serif;  height: 100%;
   min-height: 100%;
-  color: black;
+  color: white;
   background-color: #9b59b6;
 }
 
 h1, h2, h3, h4, p, a {
   text-align: center;
+}
+
+h1 {
+  font-size: 20vw;
+}
+
+h3, h4 {
+  font-style: italic;
 }
 
 nav {
@@ -60,45 +68,31 @@ form {
 }
 
 .btn {
-  color: #2bbbad;
+  color: white;
   background: none;
   box-shadow: none;
-  /*border: 2px solid;*/
-  border-style: solid;
-  border-width: thick;
-  border: #2bbbad;
   transition: 1000s ease-out;
 }
 
-input[type=text], input[type=password]  {
-  border-bottom: 2px solid white;
-}
-
-.input-field input[type=text]:focus {
-  border-bottom: 2px solid white;
-}
-
-.input-field label {
-  color: white;
-  font-size: 1.3em;
-}
-
-.input-field input[type=text]:focus + label {
-  color: white;
-}
-
-.input-field label.active {
-  color: white;
-}
 
 /*STYLING CARDS ON USER SHOW*/
 
 .card .card-content p {
-  /*border: solid black 2px;*/
   background-color: #9b59b6;
   font-size: 20px;
 }
 
+.card .card-content p a {
+  color: white;
+}
+
+.card-reveal p {
+  color: #813a9d;
+}
+
+.grey-text.text-darken-4 {
+    color: #813a9d !important;
+}
 
 /*STYLING POLLS ON GROUP SHOW*/
 

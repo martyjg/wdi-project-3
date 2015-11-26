@@ -96,11 +96,30 @@ input[type=text], input[type=password]  {
 
 /* stuff for response rating radio buttons*/
 
-.newresponse {
-  float:left;
-  width:300px;
+#newresponse {
+  display: block;
 }
-.newresponse span { float:right; position:relative; }
+
+.collapsible-body {
+  position: relative;
+}
+
+.newresponse {
+    float:left;
+    width:300px;
+    position: absolute;
+    top: 0;
+}
+
+.newresponse span { 
+  float: left;
+  position:relative; 
+}
+
+.newresponse span:nth-child(1) { 
+  margin-left: 30px;
+}
+
 .newresponse span input {
   position:absolute;
   top:0px;

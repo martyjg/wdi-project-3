@@ -3,7 +3,7 @@ var bcrypt   = require("bcrypt-nodejs");
 
 var responseSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: "User" },
-  rating: Number,
+  rating:  Number,
   comment: String
 })
 

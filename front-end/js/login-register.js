@@ -32,6 +32,11 @@ function hideCanvas() {
   $(".register, .nav-wrapper").fadeIn(1000);
 }
 
+function forceHideCanvas() {
+  $("canvas, .logo").hide();
+
+}
+
 function hideLabel() {
   console.log(this);
 }
@@ -46,6 +51,7 @@ function checkLoginState() {
 
 function showPage() {
   event.preventDefault();
+  $('.logo').removeClass('animated shake').addClass('animated shake');
 
   var linkClass = $(this).attr("class").split("-")[0];
   $("section").hide();
@@ -78,13 +84,13 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
-  getUsersList();
   $(".logged-out").hide();
   $(".logged-in").show();
   $("section").hide();
   $("#groups").show();
   showHomepage();
   getUsersList();
+  forceHideCanvas();
 }
 
 function loggedOutState() {

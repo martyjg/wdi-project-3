@@ -3,7 +3,7 @@
 body {
   font-family: 'Abel', sans-serif;
   color: black;
-  background-color: #CFD8DC;
+  background-color: #FFFC00;
 }
 
 h1, h2, h3, h4, p, a {
@@ -31,6 +31,10 @@ nav a {
   color: black;
 }
 
+.container {
+  margin-top: 15px;
+}
+
 .btn {
   color: black;
   background: none;
@@ -50,6 +54,13 @@ input[type=text], input[type=password]  {
 
 .input-field label.active {
   color: black;
+}
+
+/*STYLING CARDS ON GROUP SHOW*/
+
+.card .card-content p {
+  border: solid black 2px;
+  background-color: #FFFC00
 }
 
 /*  REMOVE SHADOW FROM BOX */
@@ -86,34 +97,34 @@ input[type=text], input[type=password]  {
 /* stuff for response rating radio buttons*/
 
 .newresponse {
-    float:left;
-    width:300px;
+  float:left;
+  width:300px;
 }
 .newresponse span { float:right; position:relative; }
 .newresponse span input {
-    position:absolute;
-    top:0px;
-    left:0px;
-    opacity:0;
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity:0;
 }
 .newresponse span label {
-    display:inline-block;
-    width:30px;
-    height:30px;
-    text-align:center;
-    color:#FFF;
-    background:#ccc;
-    font-size:30px;
-    margin-right:2px;
-    line-height:30px;
-    border-radius:50%;
-    -webkit-border-radius:50%;
+  display:inline-block;
+  width:30px;
+  height:30px;
+  text-align:center;
+  color:#FFF;
+  background:#ccc;
+  font-size:30px;
+  margin-right:2px;
+  line-height:30px;
+  border-radius:50%;
+  -webkit-border-radius:50%;
 }
 .newresponse span:hover ~ span label,
 .newresponse span:hover label,
 .newresponse span.checked label,
 .newresponse span.checked ~ span label {
-    background:#F90;
-    color:#FFF;
+  background:#F90;
+  color:#FFF;
 }
 

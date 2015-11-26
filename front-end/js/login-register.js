@@ -5,6 +5,7 @@ function init() {
   $(".new-group").on("submit", createNewGroup);
   $(".newpoll").on("submit", submitPoll);
   $(".newresponse").on("submit", submitResponse);
+  // $("label").on("click", hideLabel);
 
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link, .groups-link, .members-link, .newgroup-link, .newpoll-link, .newmember-link").on("click", showPage);
@@ -13,6 +14,10 @@ function init() {
 
   hideErrors();
   checkLoginState();
+}
+
+function hideLabel() {
+  console.log(this);
 }
 
 function checkLoginState() {

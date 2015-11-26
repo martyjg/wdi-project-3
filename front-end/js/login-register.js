@@ -19,6 +19,10 @@ function init() {
   checkLoginState();
 }
 
+function hideLabel() {
+  console.log(this);
+}
+
 function checkLoginState() {
   if (getToken()) {
     return loggedInState();

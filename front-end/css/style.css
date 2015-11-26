@@ -1,17 +1,18 @@
 /* BODY AND NAV*/
 
+html, body {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100;
+}
+
 body {
   font-family: 'Abel', sans-serif;
-  /*color: black;*/
-  background-color: #813A9D;
-}
-
-a {
-  color: white;
-}
-
-form {
-  background-color: #9B59B6;
+  height: 100%;
+  min-height: 100%;
+  color: black;
+  background-color: #9b59b6;
 }
 
 h1, h2, h3, h4, p, a {
@@ -19,14 +20,15 @@ h1, h2, h3, h4, p, a {
 }
 
 nav {
-  background: #9B59B6;
-/*  border-bottom: 2px solid black;
-*/}
+  background: white;
+  /*  border-bottom: 2px solid black; */
+}
 
 nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
   font-style: italic;
+  color: #2bbbad;
   /*color: #EF8500;yellow*/
   /*color: #813A9D;purple*/
   color: #00C19E;
@@ -46,10 +48,13 @@ nav a {
 }
 
 .btn {
-  color: black;
+  color: #2bbbad;
   background: none;
   box-shadow: none;
-  border: 2px solid black;
+  /*border: 2px solid;*/
+  border-style: solid;
+  border-width: thick;
+  border: #2bbbad;
   transition: 1000s ease-out;
 }
 
@@ -58,29 +63,24 @@ input[type=text], input[type=password]  {
 }
 
 .input-field label {
-  color: black;
+  color: white;
   font-size: 1.3em;
 }
 
 .input-field label.active {
-  color: black;
+  color: white;
 }
 
 /*STYLING CARDS ON GROUP SHOW*/
 
 .card .card-content p {
   /*border: solid black 2px;*/
-  background-color: #FFFC00;
-}
-
-.card {
-  background-color: #9B59B6;
+  background-color: #9b59b6
 }
 
 /*  REMOVE SHADOW FROM BOX */
 
 .card, .collapsible-header, .collapsible-body {
-  /*border: 2px solid black;*/
   background-color: white;
 }
 
@@ -119,10 +119,10 @@ input[type=text], input[type=password]  {
 }
 
 .newresponse {
-    float:left;
-    width:300px;
-    position: absolute;
-    top: 0;
+  float:left;
+  width:300px;
+  position: absolute;
+  top: 0;
 }
 
 .newresponse span { 
@@ -161,3 +161,66 @@ input[type=text], input[type=password]  {
   color:#FFF;
 }
 
+
+/*Particles*/
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #9b59b6;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -1;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #FFFC00;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}

@@ -111,16 +111,19 @@ function addGroupToHomepage(req) {
     '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
     '<p><a href="/" id="' + req._id + '">View Group</a></p>' +
     '</div>' +
+    '<div class="blur-me">' +
     '<div class="card-reveal">' +
     '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right">close</i></span>' +
     '<p id='+ req.emojimage+'></p>' +
     '</div>' +
     '</div>' +
+    '</div>' +
     '</div>'
     );
   $("#newgroup").hide();
+  $(".homepage").html('')
   $("#groups").show();
-
+  showHomepage();
 }
 
 function displayPolls(req) {

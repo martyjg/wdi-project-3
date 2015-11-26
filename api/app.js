@@ -76,11 +76,11 @@ app.use(function(req, res, next){
 // });
 
 // THIS IS SOCKET STUFF THAT I TRIED TO ADD
-app.set("views", "./views"); // not sure if this needs to go at the top
-app.set("view engine", "ejs"); // not sure if this needs to go at the top (also, we havent used ejs?)
-app.get('/', function(req, res){
-  res.render("index");
-});
+// app.set("views", "./views"); // not sure if this needs to go at the top
+// app.set("view engine", "ejs"); // not sure if this needs to go at the top (also, we havent used ejs?)
+// app.get('/', function(req, res){
+//   res.render("index");
+// });
 
 app.use("/", router);
 // server.listen(port);

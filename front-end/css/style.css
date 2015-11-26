@@ -77,6 +77,10 @@ input[type=text], input[type=password]  {
   font-size: 1.3em;
 }
 
+.input-field input[type=text]:focus + label {
+  color: white;
+}
+
 .input-field label.active {
   color: white;
 }
@@ -190,7 +194,6 @@ input[type=text], input[type=password]  {
 canvas {
   display: block;
   vertical-align: bottom;
-  z-index: 1000;
   position: absolute;
   top: 0px;
   left: 0px;

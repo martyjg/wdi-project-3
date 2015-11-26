@@ -134,7 +134,7 @@ function setResponseListeners() {
 
   $('body').on('click', 'form.newresponse label', function(){
       var rating = $(this).context.previousSibling.value;
-      var comment = $(this).context.parentElement.parentElement.firstChild.firstChild.value;;
+      var comment = $(this).context.parentElement.parentElement.firstChild.firstChild.value;
       var id = $(this).context.parentElement.parentElement.attributes.id.value;
       submitResponse(rating, comment, id);
     }

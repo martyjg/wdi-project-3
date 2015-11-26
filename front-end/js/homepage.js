@@ -31,6 +31,7 @@ function callback(data){
 function displayGroups(res) {
   var groups = res.groups;
 
+  $('.homepage').empty();
   for (var i=0; i < groups.length; i++) {
     var id = groups[i]._id;
     $('.homepage').append(
@@ -136,6 +137,7 @@ function displayPolls(req) {
   listMembers(groupMembers);
 
   var polls = req.group.polls;
+  $("#poll-feed").empty();
 
   for (var i = 0; i < polls.length; i++) {
 
@@ -151,6 +153,7 @@ function displayPolls(req) {
       )
   }
 }
+
 
 function setResponseListeners() {
   $('.newresponse input').click(function () {
@@ -192,6 +195,9 @@ function addPoll(req, res) {
   $("#newpoll").hide();
   $("#group").show();
 }
+
+
+
 
 function submitResponse(rating, comment, id) {
   event.preventDefault();

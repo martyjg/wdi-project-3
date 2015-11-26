@@ -12,7 +12,6 @@ function init() {
   $(".members-link").on("click", groupMemberAndAdd);
   $(".newpoll-link").on("click", groupPollAndAdd);
 
-  getUsersList();
   setResponseListeners();
 
   hideErrors();
@@ -63,6 +62,7 @@ function displayErrors(data) {
 }
 
 function loggedInState() {
+  getUsersList();
   $(".logged-out").hide();
   $(".logged-in").show();
   $("section").hide();
@@ -75,6 +75,8 @@ function loggedOutState() {
   $(".logged-in").hide();
   $("section").hide();
   $("#register").show();
+  $('.homepage').empty();
+  $("#poll-feed").empty();
 }
 
 function authenticationSuccessful(data) {

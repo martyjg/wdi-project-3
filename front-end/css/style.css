@@ -25,7 +25,10 @@ nav .brand-logo {
 nav ul a {
   font-size: 1.5rem;
   color: black;
+}
 
+nav a {
+  color: black;
 }
 
 .btn {

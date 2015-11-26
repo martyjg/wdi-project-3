@@ -115,7 +115,7 @@ function displayPolls(req) {
   for (var i = 0; i < polls.length; i++) {
     var ratings = polls[i].ratings;
     console.log(ratings);
-    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2></h2></section>';
+    var responseForm = '<section id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div></form><h2></h2></section>';
 
     $("#poll-feed").prepend(
       '<li class="poll">' +
@@ -151,7 +151,7 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2>' + req.rating + '</h2></section>';
+  var responseForm = '<section id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div></form><h2>' + req.rating + '</h2></section>';
 
   $("#poll-feed").prepend(
     '<li>' +

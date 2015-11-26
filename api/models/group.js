@@ -7,7 +7,7 @@ var groupSchema = new mongoose.Schema({
   name:        String,
   image:       String,
   description: String,
-  emojimage: String,
+  emojimage:   String,
   // users:       [{ type: mongoose.Schema.ObjectId, ref: "User", required: true }],
   created_by:  { type: mongoose.Schema.ObjectId, ref: "User" },
   polls:       [Poll.schema],

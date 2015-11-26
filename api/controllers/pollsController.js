@@ -6,7 +6,8 @@ var Response = require('../models/response')
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
   poll.created_by = currentUser;
-  poll.rating = 0;
+  poll.question   = "What's your vibe on " + req.body.question + "?";
+  poll.rating     = 0;
 
   poll.save(function(err, poll) {
     if (err) return res.status(500).send(err);

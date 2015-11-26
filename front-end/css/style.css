@@ -1,3 +1,61 @@
+/* BODY AND NAV*/
+
+body {
+  font-family: 'Abel', sans-serif;
+  color: black;
+  background-color: #CFD8DC;
+}
+
+h1, h2, h3, h4, p, a {
+  text-align: center;
+}
+
+nav {
+  background: white;
+  border-bottom: 2px solid black;
+}
+
+nav .brand-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.2rem;
+  font-style: italic;
+  color: black;
+}
+
+nav ul a {
+  font-size: 1.5rem;
+  color: black;
+
+}
+
+.btn {
+  color: black;
+  background: none;
+  box-shadow: none;
+  border: 2px solid black;
+  transition: 1000s ease-out;
+}
+
+input[type=text], input[type=password]  {
+  border-bottom: 2px solid black;
+}
+
+.input-field label {
+  color: black;
+  font-size: 1.3em;
+}
+
+.input-field label.active {
+  color: black;
+}
+
+/*  REMOVE SHADOW FROM BOX */
+
+.card, .collapsible-header, .collapsible-body {
+  border: 2px solid black;
+  background-color: white;
+}
+
 .register {
   margin: 0 auto;
 }
@@ -14,6 +72,13 @@
   text-align: center;
   font-size: 100px;
 }
+
+/* IMPROVING POLL APPEARANCE */
+
+.collapsible.popout>li {
+  margin-bottom: 25px;
+}
+
 
 /* stuff for response rating radio buttons*/
 

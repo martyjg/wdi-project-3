@@ -45,23 +45,33 @@ function pollsDelete(req, res) {
 
 function pollsResponsesCreate(req, res){
   var id = req.params.id;
-  var response = new Response(req.body);
-  response.comment = currentUser.username + " - " + req.body.comment;
-  console.log(response);
 
-  // Poll.findByIdAndUpdate(id, { 
-  //   $addToSet: { responses: response } 
-  // }, function(err, poll) {
-
-  Poll.findById({ _id: id }, function(err, poll) {
+  Poll.findOne({ 
+    _id: id,
+  }).populate("responses").exec(function(err, poll) {
     if (err) return res.status(500).send(err);
-    if (!poll) return res.status(404).send(err);
+    if (!poll) return res.status(404).send({ message: "This poll doesn't exist."});
 
-    // poll.responses.addToSet(response);
-    // poll.save();
+    for (var i=0; i < poll.responses.length; i++) {
+      console.log(poll.responses[i].user.toString() === currentUser._id.toString())
+      if (poll.responses[i].user.toString() === currentUser._id.toString()) {
+        return res.status(401).send({ messsage: "You have already rated the vibe!"});
+      }
+    }
 
-    console.log("response added to " + poll);
-    res.status(200).send(poll);
+    var response = new Response(req.body);
+    response.user    = currentUser;
+    response.comment = currentUser.username + " - " + req.body.comment;
+
+    poll.responses.push(response);
+
+    poll.save(function(err, poll){
+      console.log(err)
+      if (err) return res.status(500).send(err);
+      if (!poll) return res.status(404).send(err);
+
+      res.status(200).send(poll);
+    });
   });
 }
 

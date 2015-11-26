@@ -46,7 +46,7 @@ function displayGroups(res) {
       '</div>' +
       '<div class="card-reveal">' +
       '<span class="card-title grey-text text-darken-4">' + groups[i].name + '<i class="material-icons right">close</i></span>' +
-      '<p></p>' +
+      '<p>' + groups[i].description + '</p>' +
       '</div>' +
       '</div>' +
       '</div>');
@@ -115,7 +115,7 @@ function addGroupToHomepage(req) {
     '<div class="blur-me">' +
     '<div class="card-reveal">' +
     '<span class="card-title grey-text text-darken-4">' + req.name + '<i class="material-icons right">close</i></span>' +
-    '<p id='+ req.emojimage+'></p>' +
+    '<p id='+ req.description +'></p>' +
     '</div>' +
     '</div>' +
     '</div>' +

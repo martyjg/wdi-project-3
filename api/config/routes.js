@@ -11,6 +11,9 @@ var pollsController = require('../controllers/pollsController');
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
+router.route('/users')
+  .get(usersController.usersIndex)
+
 // USER ROUTE HANDLERS - (SHOW, EDIT, UPDATE, DELETE. NOT CURRENTLY USING INDEX)
 router.route('/users/:id')
   .get(usersController.usersShow)

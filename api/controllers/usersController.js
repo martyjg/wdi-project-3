@@ -4,6 +4,7 @@ var Group  = require('../models/group');
 function usersIndex(req, res) {
   User.find(function(err, users){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
+    console.log(users);
     res.status(200).json({ users: users });
   });
 }

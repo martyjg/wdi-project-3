@@ -3,7 +3,7 @@
 body {
   font-family: 'Abel', sans-serif;
   color: black;
-  background-color: #CFD8DC;
+  background-color: #FFFC00;
 }
 
 h1, h2, h3, h4, p, a {
@@ -12,14 +12,16 @@ h1, h2, h3, h4, p, a {
 
 nav {
   background: white;
-  border-bottom: 2px solid black;
-}
+/*  border-bottom: 2px solid black;
+*/}
 
 nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
   font-style: italic;
-  color: black;
+  /*color: #EF8500;yellow*/
+  /*color: #813A9D;purple*/
+  color: #00C19E
 }
 
 nav ul a {
@@ -29,6 +31,10 @@ nav ul a {
 
 nav a {
   color: black;
+}
+
+.container {
+  margin-top: 15px;
 }
 
 .btn {
@@ -52,10 +58,17 @@ input[type=text], input[type=password]  {
   color: black;
 }
 
+/*STYLING CARDS ON GROUP SHOW*/
+
+.card .card-content p {
+  /*border: solid black 2px;*/
+  background-color: #FFFC00
+}
+
 /*  REMOVE SHADOW FROM BOX */
 
 .card, .collapsible-header, .collapsible-body {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   background-color: white;
 }
 
@@ -110,29 +123,29 @@ input[type=text], input[type=password]  {
 }
 
 .newresponse span input {
-    position:absolute;
-    top:0px;
-    left:0px;
-    opacity:0;
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity:0;
 }
 .newresponse span label {
-    display:inline-block;
-    width:30px;
-    height:30px;
-    text-align:center;
-    color:#FFF;
-    background:#ccc;
-    font-size:30px;
-    margin-right:2px;
-    line-height:30px;
-    border-radius:50%;
-    -webkit-border-radius:50%;
+  display:inline-block;
+  width:30px;
+  height:30px;
+  text-align:center;
+  color:#FFF;
+  background:#ccc;
+  font-size:30px;
+  margin-right:2px;
+  line-height:30px;
+  border-radius:50%;
+  -webkit-border-radius:50%;
 }
 .newresponse span:hover ~ span label,
 .newresponse span:hover label,
 .newresponse span.checked label,
 .newresponse span.checked ~ span label {
-    background:#F90;
-    color:#FFF;
+  background:#F90;
+  color:#FFF;
 }
 

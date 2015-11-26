@@ -57,11 +57,11 @@ function displayGroups(res) {
 
 function showGroupPage() {
   event.preventDefault();
-  // console.log("this is this at the point of show group " + req);
   var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
   createMemberForm(id);
+  groupPollAndAdd();
   return ajaxRequest(method, url, null, displayPolls, true);
 }
 
@@ -73,25 +73,32 @@ function createNewGroup() {
   return ajaxRequest(method, url, data, addGroupToHomepage, true);
 }
 
-function createMemberForm(id) {
-  $("#newmember").append(
-    '<form class="col s12 new-member" method="put" action="/groups" id=' + id + '>' +
-      '<div class="row">' +
-        '<div id="the-basics" class="col s12">' +
-        '<input id="username" name="username" class="typeahead" type="text" placeholder="Add New Group Member">' +
-        '</div>' +
-      '</div>' +
-      '<div class="col s12">' +
-        '<div class="row">' +
-          '<input type="submit" value="new-member" class="btn" id="submit">' +
-        '</div>' +
-      '</div>' +
-    '</form>'
-    )
-  $(".new-member").on("submit", submitNewMember);
+function groupPollAndAdd() {
+  event.preventDefault();
+  $("#grouppollsdisplay").show();
+  $("#groupmembersdisplay").hide();
+  $("#newpoll").show();
+  $("#pollfeed").show();
+  $("#members").hide();
+  $("#newmember").hide();
 }
 
+function groupMemberAndAdd() {
+  event.preventDefault();
+  $("section").hide();
+  $("#members").show();
 
+  // $("#groupmembersdisplay").show();
+  // $("#grouppollsdisplay").hide();
+  // $("#newpoll").hide();
+  // $("#pollfeed").hide();
+  // $("#members").show();
+  // $("#newmember").show();
+}
+
+function createMemberForm(id) {
+  $(".new-member").attr("action", "/groups/"+ id);
+}
 
 function addGroupToHomepage(req) {
   $('.homepage').append(
@@ -119,9 +126,6 @@ function addGroupToHomepage(req) {
 function displayPolls(req) {
   $("#groups").hide();
   $("#group").show();
-  getUsersList();
-
-
   $("#groupId").val(req.group._id);
 
   var groupMembers = req.groupMembers;
@@ -131,6 +135,7 @@ function displayPolls(req) {
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {
+
     var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2 id="' + polls[i]._id + 'rating">?</h2></p>';
 
     var comments = '<p id="' + polls[i]._id + 'comments"></p>';
@@ -140,7 +145,7 @@ function displayPolls(req) {
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i><h4>' + polls[i].question + '</h4></div>' +
         '<div class="collapsible-body">' + responseForm + comments + '</div>' +
       '</li>'
-    )
+      )
   }
 }
 
@@ -179,7 +184,7 @@ function addPoll(req, res) {
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i><h4>' + req.question + '</h4></div>' +
       '<div class="collapsible-body">' + responseForm + comments +'</div>' +
     '</li>'
-  )
+    )
 
   $("#newpoll").hide();
   $("#group").show();

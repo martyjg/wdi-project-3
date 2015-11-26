@@ -12,17 +12,21 @@
   <script type="text/javascript" src="./js/particles.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Abel|Orbitron' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/animate.css">
 </head>
 <body> 
 <!-- particles.js container -->
 <div id="particles-js"></div>
+  <div class="logo">
+    <h1>VibeRate</h1>
+  </div>
   <nav>
     <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo">VibeRate.</a>
+      <a href="#" class="brand-logo animated shake">VibeRate.</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">clear_all</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/" class="newgroup-link logged-in">Create Group</a></li>
@@ -91,7 +95,6 @@
           <div class="input-field col s12">
             <input id="password" name="password" type="password">
             <label for="password">Password</label>
-            <input type="text" onfocus="if(this.value == 'value') { this.value = ''; }" value="value" />
           </div>
         </div>
         <div class="row">
@@ -194,35 +197,7 @@
         <!-- Where dem groups go -->
       </div>    
     </section>
-
-<!--     form class="col s12" id="new-group" method="post" action="/groups">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="group-name" name="name" type="text">
-          <label for="group-name">Group Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="group-emojimage" name="emojimage" type="text">
-          <label for="group-emojimage">Group Emojimage</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="group-description" name="description" type="text">
-          <label for="group-description">Group Description</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="submit" value="new-group" class="btn" id="submit">
-        </div>
-      </div>
-    </form> -->
-
   </div>
-
 </body>
 </html>
 

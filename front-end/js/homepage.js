@@ -130,12 +130,8 @@ function displayPolls(req) {
   // $("#poll-feed").show();
   var groupMembers = req.groupMembers;
 
-  for (i = 0; i < groupMembers.length; i++) {
+  listMembers(groupMembers);
 
-  $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
-    )
-}
-  
   var polls = req.group.polls;
 
   for (var i = 0; i < polls.length; i++) {

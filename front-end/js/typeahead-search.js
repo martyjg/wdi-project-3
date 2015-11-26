@@ -55,17 +55,15 @@ function submitNewMember() {
   event.preventDefault();
   var method = $(this).attr("method");
   var action = $(this).attr("action");
-  var url = "http://localhost:3000/api" + action + "/" + "HERE WE NEED THE GROUP ID" + "/adduser";
+  var groupId = $(this).context.id;
+  var url = "http://localhost:3000/api" + action + "/" + groupId + "/adduser";
   var data = $(this).serialize();
-  console.log(data);
+  return ajaxRequest(method, url, data, null, true);
 }
-// function createNewGroup() {
-//   event.preventDefault();
-//   var method = $(this).attr("method");
-//   var url    = "http://localhost:3000/api" + $(this).attr("action");
-//   var data   = $(this).serialize();
-//   return ajaxRequest(method, url, data, addGroupToHomepage, true);
-// }
 
-
-
+function listMembers(groupMembers) {
+  for (i = 0; i < groupMembers.length; i++) {
+    $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
+      )
+  } 
+}

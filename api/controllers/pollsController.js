@@ -53,8 +53,8 @@ function pollsResponsesCreate(req, res){
     if (err) return res.status(500).send(err);
     if (!poll) return res.status(404).send(err);
 
-    poll.responses.push(response)
-    poll.save()
+    poll.responses.addToSet(response);
+    poll.save();
 
     console.log("response added to " + poll);
     res.status(200).send(poll);

@@ -190,8 +190,6 @@ function addResponse(res) {
 
   $("#" + res._id + "rating").text(totalRating);
   $("#" + res._id + "comments").html(comments);
-
-  console.log(test);
 }
 
 function ajaxRequest(method, url, data, callback) {

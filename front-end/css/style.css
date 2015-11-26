@@ -44,7 +44,12 @@ nav a {
 }
 
 .container {
-  margin-top: 15px;
+  margin-top: 14px;
+}
+
+form {
+  text-align: center;
+  margin: 0 50px;
 }
 
 .btn {
@@ -71,12 +76,25 @@ input[type=text], input[type=password]  {
   color: white;
 }
 
-/*STYLING CARDS ON GROUP SHOW*/
+/*STYLING CARDS ON USER SHOW*/
 
 .card .card-content p {
   /*border: solid black 2px;*/
-  background-color: #9b59b6
+  background-color: #9b59b6;
+  font-size: 20px;
 }
+
+
+/*STYLING POLLS ON GROUP SHOW*/
+
+.card, .collapsible-header, .collapsible-body {
+  padding: 5px;
+}
+
+/*.container .row {
+  padding: 0 22px;
+}*/
+
 
 /*  REMOVE SHADOW FROM BOX */
 

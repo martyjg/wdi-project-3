@@ -1,6 +1,7 @@
 $(init);
 
 function init() {
+
   $(".login, .register").on("submit", submitForm);
   $(".new-group").on("submit", createNewGroup);
   $(".newpoll").on("submit", submitPoll);
@@ -12,11 +13,23 @@ function init() {
   $(".members-link").on("click", groupMemberAndAdd);
   $(".newpoll-link").on("click", groupPollAndAdd);
 
-  getUsersList();
   setResponseListeners();
 
   hideErrors();
   checkLoginState();
+}
+
+function showCanvas() {
+  $(".register, .nav-wrapper, .logo").show();
+  $(".register, .nav-wrapper").hide();
+  setTimeout(function(){
+         $(".logo").addClass('animated shake infinite');
+     }, 2000);
+}
+
+function hideCanvas() {
+  $("canvas, .logo").fadeOut(1000);
+  $(".register, .nav-wrapper").fadeIn(1000);
 }
 
 function hideLabel() {
@@ -51,6 +64,8 @@ function submitForm() {
 function logout() {
   event.preventDefault();
   localStorage.clear();
+  showCanvas();
+  $(setTimeout(hideCanvas, 5000));
   return loggedOutState();
 }
 
@@ -68,6 +83,7 @@ function loggedInState() {
   $("section").hide();
   $("#groups").show();
   showHomepage();
+  getUsersList();
 }
 
 function loggedOutState() {
@@ -75,6 +91,10 @@ function loggedOutState() {
   $(".logged-in").hide();
   $("section").hide();
   $("#register").show();
+
+  showCanvas();
+  $(setTimeout(hideCanvas, 5000));
+
 }
 
 function authenticationSuccessful(data) {

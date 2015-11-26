@@ -8,8 +8,7 @@ html, body {
 }
 
 body {
-  font-family: 'Abel', sans-serif;
-  height: 100%;
+  font-family: 'Montserrat Alternates', sans-serif;  height: 100%;
   min-height: 100%;
   color: black;
   background-color: #9b59b6;
@@ -20,31 +19,39 @@ h1, h2, h3, h4, p, a {
 }
 
 nav {
-  background: white;
+  background: #813a9d;
+  box-shadow: none;
   /*  border-bottom: 2px solid black; */
 }
 
 nav .brand-logo {
-  font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
-  font-style: italic;
-  color: #2bbbad;
-  /*color: #EF8500;yellow*/
-  /*color: #813A9D;purple*/
-  color: #00C19E
+  color: white;
 }
 
 nav ul a {
   font-size: 1.5rem;
-  color: black;
+  color: white;
 }
 
 nav a {
-  color: black;
+  color: white;
 }
 
 .container {
   margin-top: 15px;
+}
+
+.logo {
+  z-index: 5000;
+  margin: auto;
+  color: white;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  font-style: italic;
+  vertical-align: middle;
 }
 
 .btn {
@@ -59,7 +66,7 @@ nav a {
 }
 
 input[type=text], input[type=password]  {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 .input-field label {
@@ -167,7 +174,7 @@ input[type=text], input[type=password]  {
 canvas {
   display: block;
   vertical-align: bottom;
-  z-index: 1;
+  z-index: 1000;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -184,7 +191,6 @@ canvas {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  z-index: -1;
 }
 
 /* ---- stats.js ---- */

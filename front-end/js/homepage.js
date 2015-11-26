@@ -102,7 +102,7 @@ function createMemberForm(id) {
 }
 
 function addGroupToHomepage(req) {
-  $('.homepage').append(
+  $('.homepage').prepend(
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
     '<div class="card-image waves-effect waves-block waves-light">' +

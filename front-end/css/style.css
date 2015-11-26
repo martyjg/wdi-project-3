@@ -1,3 +1,64 @@
+/* BODY AND NAV*/
+
+body {
+  font-family: 'Abel', sans-serif;
+  color: black;
+  background-color: #CFD8DC;
+}
+
+h1, h2, h3, h4, p, a {
+  text-align: center;
+}
+
+nav {
+  background: white;
+  border-bottom: 2px solid black;
+}
+
+nav .brand-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.2rem;
+  font-style: italic;
+  color: black;
+}
+
+nav ul a {
+  font-size: 1.5rem;
+  color: black;
+}
+
+nav a {
+  color: black;
+}
+
+.btn {
+  color: black;
+  background: none;
+  box-shadow: none;
+  border: 2px solid black;
+  transition: 1000s ease-out;
+}
+
+input[type=text], input[type=password]  {
+  border-bottom: 2px solid black;
+}
+
+.input-field label {
+  color: black;
+  font-size: 1.3em;
+}
+
+.input-field label.active {
+  color: black;
+}
+
+/*  REMOVE SHADOW FROM BOX */
+
+.card, .collapsible-header, .collapsible-body {
+  border: 2px solid black;
+  background-color: white;
+}
+
 .register {
   margin: 0 auto;
 }
@@ -13,5 +74,46 @@
 .emojimage {
   text-align: center;
   font-size: 100px;
+}
+
+/* IMPROVING POLL APPEARANCE */
+
+.collapsible.popout>li {
+  margin-bottom: 25px;
+}
+
+
+/* stuff for response rating radio buttons*/
+
+.newresponse {
+    float:left;
+    width:300px;
+}
+.newresponse span { float:right; position:relative; }
+.newresponse span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.newresponse span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.newresponse span:hover ~ span label,
+.newresponse span:hover label,
+.newresponse span.checked label,
+.newresponse span.checked ~ span label {
+    background:#F90;
+    color:#FFF;
 }
 

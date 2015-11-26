@@ -44,8 +44,8 @@ router.route('/polls/:id')
   .get(pollsController.pollsShow)
 
 // RESPONSE ROUTE HANDLER
-router.route('/responses')
-  .post(responsesController.responsesCreate)
+router.route('/polls/:id/response')
+  .patch(pollsController.pollsResponsesCreate)
 
   
 module.exports = router

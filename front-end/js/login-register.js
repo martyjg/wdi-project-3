@@ -9,6 +9,8 @@ function init() {
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link, .groups-link, .members-link, .newgroup-link, .newpoll-link, .newmember-link").on("click", showPage);
 
+  setResponseListeners();
+
   hideErrors();
   checkLoginState();
 }

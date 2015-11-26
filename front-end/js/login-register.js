@@ -7,7 +7,9 @@ function init() {
   $(".newresponse").on("submit", submitResponse);
 
   $(".logout-link").on("click", logout);
-  $(".login-link, .register-link, .groups-link, .members-link, .newgroup-link, .newpoll-link, .newmember-link").on("click", showPage);
+  $(".login-link, .register-link, .groups-link, .newgroup-link, .newmember-link").on("click", showPage);
+  $(".members-link").on("click", groupMemberAndAdd);
+  $(".newpoll-link").on("click", groupPollAndAdd);
 
   setResponseListeners();
 

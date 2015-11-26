@@ -57,7 +57,6 @@ function displayGroups(res) {
 
 function showGroupPage() {
   event.preventDefault();
-  // console.log("this is this at the point of show group " + req);
   var id = $(this).attr('id');
   var method = "get";
   var url = "http://localhost:3000/api/groups/" + id;
@@ -86,34 +85,20 @@ function groupPollAndAdd() {
 
 function groupMemberAndAdd() {
   event.preventDefault();
-  $("#groupmembersdisplay").show();
-  $("#grouppollsdisplay").hide();
-  $("#newpoll").hide();
-  $("#pollfeed").hide();
+  $("section").hide();
   $("#members").show();
-  $("#newmember").show();
-}
 
+  // $("#groupmembersdisplay").show();
+  // $("#grouppollsdisplay").hide();
+  // $("#newpoll").hide();
+  // $("#pollfeed").hide();
+  // $("#members").show();
+  // $("#newmember").show();
+}
 
 function createMemberForm(id) {
-  $("#newmember").append(
-    '<form class="col s12 new-member" method="put" action="/groups" id=' + id + '>' +
-    '<div class="row">' +
-    '<div id="the-basics" class="col s12">' +
-    '<input id="username" name="username" class="typeahead" type="text" placeholder="Add New Group Member">' +
-    '</div>' +
-    '</div>' +
-    '<div class="col s12">' +
-    '<div class="row">' +
-    '<input type="submit" value="new-member" class="btn" id="submit">' +
-    '</div>' +
-    '</div>' +
-    '</form>'
-    )
-  $(".new-member").on("submit", submitNewMember);
+  $(".new-member").attr("action", "/groups/"+ id);
 }
-
-
 
 function addGroupToHomepage(req) {
   $('.homepage').append(
@@ -141,9 +126,6 @@ function addGroupToHomepage(req) {
 function displayPolls(req) {
   $("#groups").hide();
   $("#group").show();
-  getUsersList();
-
-
   $("#groupId").val(req.group._id);
 
   var groupMembers = req.groupMembers;

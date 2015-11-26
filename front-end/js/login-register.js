@@ -5,12 +5,14 @@ function init() {
   $(".new-group").on("submit", createNewGroup);
   $(".newpoll").on("submit", submitPoll);
   $(".newresponse").on("submit", submitResponse);
+  $(".new-member").on("submit", submitNewMember);
 
   $(".logout-link").on("click", logout);
-  $(".login-link, .register-link, .groups-link, .newgroup-link, .newmember-link").on("click", showPage);
+  $(".login-link, .register-link, .groups-link, .newgroup-link, .newmember-link, .members-click").on("click", showPage);
   $(".members-link").on("click", groupMemberAndAdd);
   $(".newpoll-link").on("click", groupPollAndAdd);
 
+  getUsersList();
   setResponseListeners();
 
   hideErrors();

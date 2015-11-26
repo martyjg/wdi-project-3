@@ -126,14 +126,24 @@
     </section>
 
     <section id="members">
+      <form class="col s12 new-member" method="put" action="/groups">  
+        <div class="row">
+          <div id="the-basics" class="col s12">
+            <input id="username" name="username" class="typeahead" type="text" placeholder="Add New Group Member">
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="row">
+            <input type="submit" value="new-member" class="btn" id="submit">
+          </div>
+        </div>
+      </form> 
       <ul class="collapsible" data-collapsible="accordion">
         <li>
           <div class="collapsible-header"><i class="fa fa-arrow-down"></i>Group Members</div>
           <div class="collapsible-body"><p id="listed-group-members"></p></div>
         </li>
       </ul>
-    </section>
-    <section id="newmember">
     </section>
 
     <section id="newpoll" class="row">
@@ -154,29 +164,11 @@
         </div>
       </form>
     </section>
+
     <section id="pollfeed">
       <ul class="collapsible popout" id="poll-feed" data-collapsible="accordion">
       </ul>
     </section>
-
-
-<!--     <section id="newmember">
-      <form class="col s12 new-member" method="post" action="/groups">
-        <div class="row">
-          <div class="input-field col s12">
-            <div id="the-basics">
-              <input class="typeahead" type="text" placeholder="Enter user name" id="member-name">
-              <label for="member-name">Add New Member</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="submit" value="new-group" class="btn" id="submit">
-          </div>
-        </div>
-      </form>
-    </section> -->
 
     <section id="newgroup" class="row">
       <form class="col s12 new-group" method="post" action="/groups">

@@ -77,7 +77,7 @@ function addGroupToHomepage(req) {
     '<div class="col s12 m6 l4">' +
     '<div class="card">' +
     '<div class="card-image waves-effect waves-block waves-light">' +
-    '<img class="activator" src="http://materializecss.com/images/office.jpg">' +
+      '<h1 class="emojimage" id='+ req.emojimage+'><h1>' +
     '</div>' +
     '<div class="card-content">' +
     '<span class="card-title activator grey-text text-darken-4">' + req.name + '<i class="material-icons right"><i class="fa fa-arrow-up"></i></i></span>' +
@@ -114,10 +114,12 @@ function displayPolls(req) {
   for (var i = 0; i < polls.length; i++) {
     var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2 id="' + polls[i]._id + 'rating">?</h2></p>';
 
+    var comments = '<p id="' + polls[i]._id + 'comments"></p>';
+
     $("#poll-feed").prepend(
       '<li class="poll">' +
         '<div class="collapsible-header"><i class="fa fa-arrow-down"></i><h4>' + polls[i].question + '</h4></div>' +
-        '<div class="collapsible-body">' + responseForm + '</div>' +
+        '<div class="collapsible-body">' + responseForm + comments + '</div>' +
       '</li>'
     )
   }
@@ -151,10 +153,12 @@ function submitPoll() {
 function addPoll(req, res) {
   var responseForm = '<p id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"></label></span></form><h2 id="' + req._id + 'rating">?</h2></p>';
 
+  var comments = '<p id="' + req._id + 'comments"></p>';
+
   $("#poll-feed").prepend(
     '<li>' +
       '<div class="collapsible-header"><i class="fa fa-arrow-down"></i><h4>' + req.question + '</h4></div>' +
-      '<div class="collapsible-body">' + responseForm + '</div>' +
+      '<div class="collapsible-body">' + responseForm + comments +'</div>' +
     '</li>'
   )
 
@@ -174,11 +178,19 @@ function submitResponse(rating, comment, id) {
 function addResponse(res) {
   event.preventDefault();
   var totalRating = 0;
+  var comments = "";
   for (var i = 0; i < res.responses.length; i++) {
     totalRating = totalRating + res.responses[i].rating;
+
+    var comment = "<p>" + res.responses[i].comment + "</p>";
+
+    console.log(comment);
+    comments = comments + comment;
   }
-  var test = $("#" + res._id + "rating").text();
+
   $("#" + res._id + "rating").text(totalRating);
+  $("#" + res._id + "comments").html(comments);
+
   console.log(test);
 }
 

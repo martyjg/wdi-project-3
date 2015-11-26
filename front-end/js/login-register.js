@@ -85,6 +85,7 @@ function loggedInState() {
   $("#groups").show();
   showHomepage();
   getUsersList();
+  hideCanvas();
 }
 
 function loggedOutState() {

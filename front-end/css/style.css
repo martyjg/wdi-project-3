@@ -11,7 +11,7 @@ body {
   font-family: 'Abel', sans-serif;
   height: 100%;
   min-height: 100%;
-  color: black;
+  color: white;
   background-color: #9b59b6;
 }
 
@@ -20,23 +20,23 @@ h1, h2, h3, h4, p, a {
 }
 
 nav {
-  background: white;
-  /*  border-bottom: 2px solid black; */
+  background: #813a9d;
+  
 }
 
 nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.2rem;
   font-style: italic;
-  color: #2bbbad;
+  color: #813a9d;
   /*color: #EF8500;yellow*/
   /*color: #813A9D;purple*/
-  color: #00C19E
+  color: white;
 }
 
 nav ul a {
   font-size: 1.5rem;
-  color: black;
+  color: white;
 }
 
 nav a {
@@ -51,11 +51,11 @@ nav a {
   color: #2bbbad;
   background: none;
   box-shadow: none;
-  /*border: 2px solid;*/
-  border-style: solid;
+  border: 2px solid;
+/*  border-style: solid;
   border-width: thick;
   border: #2bbbad;
-  transition: 1000s ease-out;
+  transition: 1000s ease-out;*/
 }
 
 input[type=text], input[type=password]  {

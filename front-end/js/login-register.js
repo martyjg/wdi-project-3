@@ -12,7 +12,6 @@ function init() {
   $(".members-link").on("click", groupMemberAndAdd);
   $(".newpoll-link").on("click", groupPollAndAdd);
 
-  getUsersList();
   setResponseListeners();
 
   hideErrors();
@@ -68,6 +67,7 @@ function loggedInState() {
   $("section").hide();
   $("#groups").show();
   showHomepage();
+  getUsersList();
 }
 
 function loggedOutState() {

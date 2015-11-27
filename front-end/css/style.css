@@ -77,12 +77,18 @@ form {
   margin: auto;
   color: white;
   position: absolute;
+  left: -20px;
   width: 100vw;
   height: 100vh;
   text-align: center;
   font-style: italic;
   vertical-align: middle;
   left: -20px;
+}
+
+.logo h1 {
+  font-size: 100px;
+  line-height: 660px;
 }
 
 .logo h1 {
@@ -202,6 +208,7 @@ form {
 .collapsible-header {
   border-bottom: 5px solid #78909C;
   box-shadow: none;
+  color: #455A64;
 }
 
 .collapsible.popout>li.active, .collapsible.popout>li {
@@ -236,8 +243,6 @@ form {
   margin-right: 15px;
 }
 
-
-
 #comment {
   color: #455A64;
   border-bottom: 1px solid #455A64;
@@ -246,7 +251,10 @@ form {
 
 .newresponse .input-field label {
   color: #455A64;
+}
 
+.tt-menu {
+  background-color: #455A64;
 }
 
 .newresponse span input {

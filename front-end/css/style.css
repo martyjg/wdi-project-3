@@ -235,8 +235,6 @@ form {
   margin-right: 15px;
 }
 
-
-
 #comment {
   color: #455A64;
   border-bottom: 1px solid #455A64;
@@ -246,6 +244,10 @@ form {
 .newresponse .input-field label {
   color: #455A64;
 
+}
+
+.tt-menu {
+  background-color: #455A64;
 }
 
 .newresponse span input {

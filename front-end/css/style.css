@@ -11,7 +11,7 @@ body {
   font-family: 'Montserrat Alternates', sans-serif;  height: 100%;
   min-height: 100%;
   color: white;
-  background-color: #9b59b6;
+  background-color: #78909C;
 }
 
 h1, h2, h3, h4, p, a {
@@ -20,14 +20,30 @@ h1, h2, h3, h4, p, a {
 
 h1 {
   font-size: 20vw;
+  margin: 20px 0 0 0 ;
+}
+
+h2 {
+  color: #455A64;
+  font-size: 2.8rem;
+  text-align: right;
+  padding-right: 5%;
+  padding-top: 30px;
+  margin: 0;
+
 }
 
 h3, h4 {
-  font-style: italic;
+  color: white;
+}
+
+h4 {
+  font-size: 1.6rem;
 }
 
 nav {
-  background: #813a9d;
+  background: #455A64;
+  box-shadow: none;
 }
 
 nav .brand-logo {
@@ -44,13 +60,16 @@ nav a {
   color: white;
 }
 
+nav .nav-wrapper {
+  margin-bottom: 10px;
+}
+
 .container {
   margin-top: 14px;
 }
 
 form {
   text-align: center;
-  margin: 0 50px;
 }
 
 .logo {
@@ -67,8 +86,9 @@ form {
 
 .btn {
   color: white;
-  background: none;
+  background: #455A64;
   box-shadow: none;
+
   transition: 1000s ease-out;
 }
 
@@ -76,7 +96,7 @@ form {
 /*STYLING CARDS ON USER SHOW*/
 
 .card .card-content p {
-  background-color: #9b59b6;
+  background-color: #455A64;
   font-size: 20px;
 }
 
@@ -84,45 +104,16 @@ form {
   color: white;
 }
 
+.card .card-content {
+  padding-top: 0;
+}
+
 .card-reveal p {
-  color: #813a9d;
+  color: #455A64;
 }
 
 .grey-text.text-darken-4 {
-    color: #813a9d !important;
-}
-
-/*STYLING POLLS ON GROUP SHOW*/
-
-.card, .collapsible-header, .collapsible-body {
-  padding: 5px;
-}
-
-/*.container .row {
-  padding: 0 22px;
-}*/
-
-[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
-  padding: 1px;
-  height: 50px;
-  width: 50px;
-}
-
-[type="radio"]:not(:checked)+label:before {
-  display: none;
-}
-
-.newresponse span:hover label {
-  font-size: 45px;
-}
-
-#newresponse {
-  background-color: #CCCCCC;
-}
-/*  REMOVE SHADOW FROM BOX */
-
-.card, .collapsible-header, .collapsible-body {
-  background-color: white;
+    color: #455A64 !important;
 }
 
 .register {
@@ -144,35 +135,112 @@ form {
 
 /* IMPROVING POLL APPEARANCE */
 
+.card {
+  border-radius: 0;
+  transition: none;
+}
+
+.card, .collapsible-header, .collapsible-body {
+  padding: 5px;
+}
+
+.collapsible-header h4 {
+  color: #455A64
+}
+
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+  padding: 1px;
+  height: 40px;
+  width: 40px;
+}
+
+[type="radio"]:not(:checked)+label:before {
+  display: none;
+}
+
+.newresponse span:hover label {
+  font-size: 45px;
+}
+
+.card, .collapsible-header, .collapsible-body {
+  background-color: white;
+}
+
+.collapsible {
+  box-shadow: 0;
+}
+
 .collapsible.popout>li {
   margin-bottom: 25px;
+}
+
+#listed-group-members li p {
+  color: #455A64;
+  padding: 10px;
+  border-bottom: 1px solid #455A64;
 }
 
 
 /* stuff for response rating radio buttons*/
 
-#newresponse {
-  display: block;
-}
-
 .collapsible-body {
   position: relative;
+  box-shadow: none;
+}
+
+.collapsible-body p {
+  padding: 1rem;
+  color: #455A64;
+}
+
+.collapsible-header {
+  border-bottom: 5px solid #78909C;
+  box-shadow: none;
+}
+
+.collapsible.popout>li.active, .collapsible.popout>li {
+  box-shadow: none;
+}
+
+#question, div.row {
+  margin: 0;
+}
+
+.comment {
+  border-bottom: 1px solid #455A64;
 }
 
 .newresponse {
-  float:left;
-  width:300px;
+  width: 90%;
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.newresponse p {
+  color: #455A64;
+  border-bottom: 1px solid #455A64;
 }
 
 .newresponse span { 
   float: left;
   position:relative; 
+  margin-right: 15px;
 }
 
-.newresponse span:nth-child(1) { 
-  margin-left: 30px;
+
+
+#comment {
+  color: #455A64;
+  border-bottom: 1px solid #455A64;
+  margin-bottom: 8px;
+}
+
+.newresponse .input-field label {
+  color: #455A64;
+
 }
 
 .newresponse span input {
@@ -183,14 +251,14 @@ form {
 }
 .newresponse span label {
   display:inline-block;
-  width:30px;
-  height:30px;
+  width:25px;
+  height:25px;
   text-align:center;
   color:#FFF;
-  background:#ccc;
-  font-size:30px;
+  background:#455A64;
+  font-size:25px;
   margin-right:2px;
-  line-height:30px;
+  line-height:25px;
   border-radius:50%;
   -webkit-border-radius:50%;
 }
@@ -198,8 +266,12 @@ form {
 .newresponse span:hover label,
 .newresponse span.checked label,
 .newresponse span.checked ~ span label {
-  background:#F90;
+  background: #455A64;
   color:#FFF;
+}
+
+.fa-angle-double-down:before, .fa-angle-down:before, .fa-minus:before, .fa-angle-up:before, .fa-angle-double-up:before {
+  font-size: 25px;
 }
 
 
@@ -219,7 +291,7 @@ canvas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #9b59b6;
+  background-color: #455A64;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;

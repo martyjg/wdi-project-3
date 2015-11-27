@@ -20,7 +20,7 @@ function init() {
 }
 
 function showCanvas() {
-  $(".register, .nav-wrapper, .logo").show();
+  $("canvas, #particles-js, .register, .nav-wrapper, .logo").show();
   $(".register, .nav-wrapper").hide();
   setTimeout(function(){
          $(".logo").addClass('animated shake infinite');

@@ -86,6 +86,7 @@ form {
 }
 
 .logo h1 {
+  font-size: 100px;
   line-height: 660px;
 }
 
@@ -201,6 +202,7 @@ form {
 .collapsible-header {
   border-bottom: 5px solid #78909C;
   box-shadow: none;
+  color: #455A64;
 }
 
 .collapsible.popout>li.active, .collapsible.popout>li {
@@ -243,7 +245,6 @@ form {
 
 .newresponse .input-field label {
   color: #455A64;
-
 }
 
 .tt-menu {

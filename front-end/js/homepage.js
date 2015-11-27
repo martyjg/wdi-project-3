@@ -1,3 +1,6 @@
+var colors = ['#E57373', '#00E676', '#FFEE58', '#29B6F6', '#E57373', '#00E676', '#FFEE58', '#29B6F6'];
+// red, purple, blue, purple
+
 function showHomepage(data) {
   $(".homepage").show();
 
@@ -135,13 +138,16 @@ function displayPolls(req) {
 
   for (var i = 0; i < polls.length; i++) {
 
+
+    var random_color = colors[i];
+
     var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"><i class="fa fa-angle-double-down"></i></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"><i class="fa fa-angle-down"></i></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"><i class="fa fa-minus"></i></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"><i class="fa fa-angle-up"></i></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"><i class="fa fa-angle-double-up"></i></label></span></form><h2 id="' + polls[i]._id + 'rating">VibeRating : ?</h2></p>';
 
     var comments = '<p id="' + polls[i]._id + 'comments"></p>';
 
     $("#poll-feed").prepend(
       '<li class="poll">' +
-        '<div class="collapsible-header"><i class="fa fa-arrow-down"></i><h4>' + polls[i].question + '</h4></div>' +
+        '<div class="collapsible-header"  style="background:' + random_color + '"><i class="fa fa-arrow-down"></i><h4>' + polls[i].question + '</h4></div>' +
         '<div class="collapsible-body">' + responseForm + comments + '</div>' +
       '</li>'
       )

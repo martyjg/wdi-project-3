@@ -53,19 +53,17 @@ function submitNewMember() {
   var action = $(this).attr("action");
   var url    = "http://localhost:3000/api" + action + "/adduser"
 
-  // var groupId = $(this).context.id;
-  // var url = "http://localhost:3000/api" + action + "/" + groupId + "/adduser";
   var data = $(this).serialize();
 
   return ajaxRequest(method, url, data, function(data){
-    $("#listed-group-members").prepend("<li>"+data.user.username+"</li>");
+    $("#listed-group-members").prepend("<li><p>"+data.user.username+"</p></li>");
   });
 }
 
 function listMembers(groupMembers) {
   $("#listed-group-members").empty();
   for (i = 0; i < groupMembers.length; i++) {
-    $("#listed-group-members").prepend("<li>" + groupMembers[i] + "</li>"
+    $("#listed-group-members").prepend("<li><p>" + groupMembers[i] + "</p></li>"
       )
   } 
 }

@@ -88,13 +88,7 @@ function groupMemberAndAdd() {
   event.preventDefault();
   $("section").hide();
   $("#members").show();
-
-  // $("#groupmembersdisplay").show();
-  // $("#grouppollsdisplay").hide();
-  // $("#newpoll").hide();
-  // $("#pollfeed").hide();
-  // $("#members").show();
-  // $("#newmember").show();
+  $("#members").show();
 }
 
 function createMemberForm(id) {
@@ -141,7 +135,7 @@ function displayPolls(req) {
 
   for (var i = 0; i < polls.length; i++) {
 
-    var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"><i class="fa fa-angle-double-down"></i></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"><i class="fa fa-angle-down"></i></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"><i class="fa fa-minus"></i></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"><i class="fa fa-angle-up"></i></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"><i class="fa fa-angle-double-up"></i></label></span></form><p><h2 id="' + polls[i]._id + 'rating">?</h2></p></p>';
+    var responseForm = '<p id="newresponse"><form class="newresponse" id="' + polls[i]._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"><i class="fa fa-angle-double-down"></i></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"><i class="fa fa-angle-down"></i></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"><i class="fa fa-minus"></i></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"><i class="fa fa-angle-up"></i></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"><i class="fa fa-angle-double-up"></i></label></span></form><h2 id="' + polls[i]._id + 'rating">VibeRating : ?</h2></p>';
 
     var comments = '<p id="' + polls[i]._id + 'comments"></p>';
 
@@ -181,8 +175,7 @@ function submitPoll() {
 }
 
 function addPoll(req, res) {
-  var responseForm = '<p id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text" placeholder="comment"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"><i class="fa fa-angle-double-down"></i></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"><i class="fa fa-angle-down"></i></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"><i class="fa fa-minus"></i></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"><i class="fa fa-angle-up"></i></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"><i class="fa fa-angle-double-up"></i></label></span></form><h2 id="' + req._id + 'rating">?</h2></p>';
-
+  var responseForm = '<p id="newresponse"><form class="newresponse" id="' + req._id + '" method="post" action="/responses"><div class="input-field col s12"><input id="comment" name="comment" type="text"><label for="comment">comment</label></div><span><input type="radio" name="rating" id="minus2" value="-2"><label for="-2"><i class="fa fa-angle-double-down"></i></label></span><span><input type="radio" name="rating" id="minus1" value="-1"><label for="-1"><i class="fa fa-angle-down"></i></label></span><span><input type="radio" name="rating" id="zero" value="0"><label for="0"><i class="fa fa-minus"></i></label></span><span><input type="radio" name="rating" id="plus1" value="1"><label for="1"><i class="fa fa-angle-up"></i></label></span><span><input type="radio" name="rating" id="plus2" value="2"><label for="2"><i class="fa fa-angle-double-up"></i></label></span></form><h2 id="' + req._id + 'rating">VibeRating : ?</h2></p>';
   var comments = '<p id="' + req._id + 'comments"></p>';
 
   $("#poll-feed").prepend(
@@ -195,9 +188,6 @@ function addPoll(req, res) {
   $("#newpoll").hide();
   $("#group").show();
 }
-
-
-
 
 function submitResponse(rating, comment, id) {
   event.preventDefault();
@@ -215,13 +205,13 @@ function addResponse(res) {
   for (var i = 0; i < res.responses.length; i++) {
     totalRating = totalRating + res.responses[i].rating;
 
-    var comment = "<p>" + res.responses[i].comment + "</p>";
+    var comment = "<p class='comment'>" + res.responses[i].comment + "</p>";
 
     console.log(comment);
     comments = comments + comment;
   }
 
-  $("#" + res._id + "rating").text(totalRating);
+  $("#" + res._id + "rating").text("VibeRating :" + totalRating);
   $("#" + res._id + "comments").html(comments);
 }
 

@@ -3,6 +3,11 @@
    color: white;
  }
  /* label focus color */
+
+ input[type=text], input[type=password] {
+   border-bottom: 1px solid white;
+ }
+
  .input-field input[type=text]:focus + label {
    color: white;
  }
@@ -44,3 +49,11 @@
  .input-field .prefix.active {
    color: white;
  }
+
+ input:-webkit-autofill {
+   background: none;
+   border: 0px;
+
+ }
+
+ .input

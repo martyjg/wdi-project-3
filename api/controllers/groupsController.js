@@ -25,26 +25,26 @@ function groupsCreate(req, res) {
 function groupsShow(req, res) {
   var id = req.params.id;
   // Group.findById({ _id: id }.populate("users").exec(function(err, group)
-    Group.findById({ _id: id }, function(err, group) {
-      if (err) return res.status(500).json(err);
-      if (!group) return res.status(404).json(err);
+  Group.findById({ _id: id }, function(err, group) {
+    if (err) return res.status(500).json(err);
+    if (!group) return res.status(404).json(err);
 
-      User.find({}, function(err, users) {
-        
-        var groupMembers = [];
-        for (i = 0; i < users.length; i++) {
-          for (j = 0; j < users[i].groups.length; j++) {
-            var groupId = users[i].groups[j];
-            if (groupId == id) {
-              groupMembers.push(users[i].username)
-            };
+    User.find({}, function(err, users) {
+
+      var groupMembers = [];
+      for (i = 0; i < users.length; i++) {
+        for (j = 0; j < users[i].groups.length; j++) {
+          var groupId = users[i].groups[j];
+          if (groupId == id) {
+            groupMembers.push(users[i].username)
           };
         };
+      };
         
-        res.status(200).json({ group: group, groupMembers: groupMembers});
-      });
+      res.status(200).json({ group: group, groupMembers: groupMembers});
     });
-  };
+  });
+};
 
 
 

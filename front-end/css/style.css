@@ -82,6 +82,12 @@ form {
   text-align: center;
   font-style: italic;
   vertical-align: middle;
+  left: -20px;
+}
+
+.logo h1 {
+  font-size: 100px;
+  line-height: 660px;
 }
 
 .btn {

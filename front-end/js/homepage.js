@@ -217,7 +217,7 @@ function addResponse(res) {
     comments = comments + comment;
   }
 
-  $("#" + res._id + "rating").text("VibeRating :" + totalRating);
+  $("#" + res._id + "rating").text("VibeRating : " + totalRating);
   $("#" + res._id + "comments").html(comments);
 }
 

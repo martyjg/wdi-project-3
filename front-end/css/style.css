@@ -77,11 +77,16 @@ form {
   margin: auto;
   color: white;
   position: absolute;
+  left: -20px;
   width: 100vw;
   height: 100vh;
   text-align: center;
   font-style: italic;
   vertical-align: middle;
+}
+
+.logo h1 {
+  line-height: 660px;
 }
 
 .btn {

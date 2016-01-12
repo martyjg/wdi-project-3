@@ -39,7 +39,7 @@ function getUsersList() {
 
 function getUsers() {
   var method = "get";
-  var url = "http://localhost:3000/api/users"
+  var url = "/api/users"
   return ajaxRequest(method, url, null, getUsersCallback, false);
 }
 
@@ -51,7 +51,7 @@ function submitNewMember() {
   event.preventDefault();
   var method = $(this).attr("method");
   var action = $(this).attr("action");
-  var url    = "http://localhost:3000/api" + action + "/adduser"
+  var url    = "/api" + action + "/adduser"
 
   var data = $(this).serialize();
 

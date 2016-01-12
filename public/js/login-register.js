@@ -62,7 +62,7 @@ function submitForm() {
   event.preventDefault();
 
   var method = $(this).attr("method");
-  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var url    = "/api" + $(this).attr("action");
   var data   = $(this).serialize();
   return ajaxRequestforLoginRegister(method, url, data, authenticationSuccessful, true);
 }
@@ -112,7 +112,7 @@ function authenticationSuccessful(data) {
 
 function setCurrentUser(token) {
   console.log(token);
-  
+
   return localStorage.setItem('currentUser', atob(token.split(".")[1]));
 }
 

@@ -7,7 +7,7 @@ function showHomepage(data) {
   var user = currentUser()
   var id = user._id;
   var method = "get";
-  var url = "http://localhost:3000/api/users/" + id;
+  var url = "/api/users/" + id;
   return ajaxRequest(method, url, null, displayGroups, true);
 }
 
@@ -63,7 +63,7 @@ function showGroupPage() {
   event.preventDefault();
   var id = $(this).attr('id');
   var method = "get";
-  var url = "http://localhost:3000/api/groups/" + id;
+  var url = "/api/groups/" + id;
   createMemberForm(id);
   groupPollAndAdd();
   return ajaxRequest(method, url, null, displayPolls, true);
@@ -72,7 +72,7 @@ function showGroupPage() {
 function createNewGroup() {
   event.preventDefault();
   var method = $(this).attr("method");
-  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var url    = "/api" + $(this).attr("action");
   var data   = $(this).serialize();
   return ajaxRequest(method, url, data, addGroupToHomepage, true);
 }
@@ -174,7 +174,7 @@ function setResponseListeners() {
 function submitPoll() {
   event.preventDefault();
   var method = $(this).attr("method");
-  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var url    = "/api" + $(this).attr("action");
   var data   = $(this).serialize();
 
   return ajaxRequest(method, url, data, addPoll, true);
@@ -198,7 +198,7 @@ function addPoll(req, res) {
 function submitResponse(rating, comment, id) {
   event.preventDefault();
   var method = "patch";
-  var url    = "http://localhost:3000/api/polls/" + id + "/response";
+  var url    = "/api/polls/" + id + "/response";
   var data   = { rating: rating, comment: comment };
 
   return ajaxRequest(method, url, data, addResponse, true); 

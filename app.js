@@ -82,7 +82,7 @@ app.use(function(req, res, next){
 //   res.render("index");
 // });
 
-app.use("/", router);
+// app.use("/", router);
 // server.listen(port);
 // console.log("SERVER STARTED ON " + port);
 
@@ -103,5 +103,9 @@ app.use("/", router);
 var routes = require("./config/routes");
 app.use("/api", routes);
 
-app.listen(3000); // This seems to be causing me a problem
+app.use("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html");
+})
+
+app.listen(port); // This seems to be causing me a problem
 console.log("Heard loud and clear")

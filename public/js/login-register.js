@@ -111,11 +111,16 @@ function authenticationSuccessful(data) {
 }
 
 function setCurrentUser(token) {
+  console.log(token);
+  
   return localStorage.setItem('currentUser', atob(token.split(".")[1]));
 }
 
 function currentUser(){
-  return JSON.parse(localStorage.getItem('currentUser'));
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  console.log(currentUser)
+  console.log(currentUser._doc)
+  return currentUser._doc;
 }
 
 function setToken(token) {

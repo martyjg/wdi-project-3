@@ -16,8 +16,15 @@ function groupsCreate(req, res) {
   }, { 
     $addToSet: { groups: group._id }
   }, function(err, user) {
-    if (err) return res.status(500).json(err);
-    if (!user) return res.status(404).json(err);
+    if (err) {
+      console.log(err)
+      // return res.status(500).json(err);
+    }
+    if (!user) {
+      console.log("no user");
+      // return res.status(404).json(err);
+    }
+    console.log("Added to user!");
   });
 };
 

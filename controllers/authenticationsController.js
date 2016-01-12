@@ -38,6 +38,8 @@ function login(req, res, next) {
 
     var token = jwt.sign(user, secret, { expiresIn: 60*60*24 });
 
+    console.log(user);
+
     return res.status(200).json({
       success: true,
       message: 'Welcome!',

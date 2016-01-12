@@ -1,7 +1,6 @@
 $(init);
 
 function init() {
-
   $(".login, .register").on("submit", submitForm);
   $(".new-group").on("submit", createNewGroup);
   $(".newpoll").on("submit", submitPoll);
@@ -14,7 +13,6 @@ function init() {
   $(".newpoll-link").on("click", groupPollAndAdd);
 
   setResponseListeners();
-
   hideErrors();
   checkLoginState();
 }
@@ -28,8 +26,8 @@ function showCanvas() {
 }
 
 function hideCanvas() {
-  $("canvas, #particles-js ,.logo").fadeOut(1000);
-  $(".register, .nav-wrapper").fadeIn(1000);
+  // $("canvas, #particles-js ,.logo").fadeOut(1000);
+  // $(".register, .nav-wrapper").fadeIn(1000);
 }
 
 function forceHideCanvas() {

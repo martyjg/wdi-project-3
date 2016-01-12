@@ -25,7 +25,10 @@ var secret         = require('./config/config').secret;
 
 // Setup the Database
 
-mongoose.connect(config.database);
+var mongoUri =  process.env.MONGOLAB_URI || config.database;
+
+
+mongoose.connect(mongoUri);
 
 require('./config/passport')(passport);
 
@@ -103,5 +106,5 @@ app.use("/", router);
 var routes = require("./config/routes");
 app.use("/api", routes);
 
-app.listen(3000); // This seems to be causing me a problem
+app.listen(port); // This seems to be causing me a problem
 console.log("Heard loud and clear")

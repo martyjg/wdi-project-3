@@ -4,7 +4,7 @@ var colors = ['#E57373', '#00E676', '#FFEE58', '#29B6F6', '#E57373', '#00E676', 
 function showHomepage(data) {
   $(".homepage").show();
 
-  var user = currentUser()
+  var user = currentUser();
   var id = user._id;
   var method = "get";
   var url = "http://localhost:3000/api/users/" + id;
@@ -74,6 +74,7 @@ function createNewGroup() {
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
+  debugger;
   return ajaxRequest(method, url, data, addGroupToHomepage, true);
 }
 
@@ -199,6 +200,7 @@ function submitResponse(rating, comment, id) {
   event.preventDefault();
   var method = "patch";
   var url    = "http://localhost:3000/api/polls/" + id + "/response";
+  // var url    = "http://localhost:3000/api/polls/" + id;
   var data   = { rating: rating, comment: comment };
 
   return ajaxRequest(method, url, data, addResponse, true); 

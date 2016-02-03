@@ -5,7 +5,7 @@ var Response = require('../models/response')
 
 function pollsCreate(req, res) {
   var poll = new Poll(req.body);
-  poll.created_by = currentUser;
+  poll.created_by = currentUser._doc;
   poll.question   = "What's your vibe on " + req.body.question + "?";
   poll.rating     = 0;
 
@@ -45,6 +45,7 @@ function pollsDelete(req, res) {
 
 function pollsResponsesCreate(req, res){
   var id = req.params.id;
+  console.log(req.params);
 
   Poll.findOne({ 
     _id: id,
@@ -53,15 +54,18 @@ function pollsResponsesCreate(req, res){
     if (!poll) return res.status(404).send({ message: "This poll doesn't exist."});
 
     for (var i=0; i < poll.responses.length; i++) {
-      console.log(poll.responses[i].user.toString() === currentUser._id.toString())
-      if (poll.responses[i].user.toString() === currentUser._id.toString()) {
+      console.log("this is currentUser apparently", currentUser._doc);
+      console.log("poll responses: ", poll.responses);
+
+      console.log(poll.responses[i].user.toString() === currentUser._doc._id.toString())
+      if (poll.responses[i].user.toString() === currentUser._doc._id.toString()) {
         return res.status(401).send({ messsage: "You have already rated the vibe!"});
       }
     }
 
     var response = new Response(req.body);
-    response.user    = currentUser;
-    response.comment = currentUser.username + " - " + req.body.comment;
+    response.user    = currentUser._doc;
+    response.comment = currentUser._doc.username + " - " + req.body.comment;
 
     poll.responses.push(response);
 

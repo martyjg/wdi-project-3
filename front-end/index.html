@@ -2,12 +2,11 @@
 <html>
 <head>
   <title>VibeRate</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
   <script type="text/javascript" src="./js/homepage.js"></script>
   <script type="text/javascript" src="./js/login-register.js"></script>
   <script type="text/javascript" src="./js/typeahead-search.js"></script>
-  <script type="text/javascript" src="./js/socket.js"></script>
   <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script type="text/javascript" src="./js/particles.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -52,7 +51,7 @@
 
     <section id="register">
       <h3>Get a sense of the vibe.</h3>
-      <form class="col s12 register" method="post" action="/register">
+      <form class="col s12 register" method="post" action="/register" autocorrect="off">
         <div class="row">
           <div class="input-field col s12">
             <input id="username" name="username" type="text">
@@ -81,7 +80,7 @@
 
     <section id="login">
       <h3>Get a sense of the vibe.</h3>
-      <form class="col s12 login" method="post" action="/login">
+      <form class="col s12 login" method="post" action="/login" autocorrect="off">
         <div class="row">
           <div class="input-field col s12">
             <input id="email" name="email" type="text">
@@ -117,7 +116,7 @@
           <div class="collapsible-body"><p id="listed-group-members"></p></div>
         </li>
       </ul>
-      <form class="col s12 new-member" method="put" action="/groups">  
+      <form class="col s12 new-member" method="put" action="/groups" autocorrect="off">  
         <div class="row">
           <div id="the-basics" class="col s12 input-field">
             <input id="username" name="username" class="typeahead" type="text" placeholder="New Member">
@@ -145,7 +144,7 @@
 
     <section id="newpoll" class="row">
       <h5>New Poll</h5>
-      <form class="col s12 newpoll" method="post" action="/polls">
+      <form class="col s12 newpoll" method="post" action="/polls" autocorrect="off">
         <div class="row">
           <div class="input-field col s12">
             <input id="question" name="question" type="text" placeholder="What's your vibe on:">
@@ -164,7 +163,7 @@
     </section>
 
     <section id="newgroup" class="row">
-      <form class="col s12 new-group" method="post" action="/groups">
+      <form class="col s12 new-group" method="post" action="/groups" autocorrect="off">
         <div class="row">
           <div class="input-field col s12">
             <input id="group-name" name="name" type="text">

@@ -10,6 +10,8 @@ function usersIndex(req, res) {
 }
 
 function usersShow(req, res){
+  console.log("this is the req (backend params), ", req.params);
+  // console.log("this is the res, ", res);
   User.findById(req.params.id).populate("groups").exec(function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
     res.status(200).json(user);

@@ -12,7 +12,7 @@ function groupsCreate(req, res) {
   });
 
   User.findOneAndUpdate({ 
-    username: currentUser.username
+    username: currentUser._doc.username
   }, { 
     $addToSet: { groups: group._id }
   }, function(err, user) {

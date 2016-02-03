@@ -14,6 +14,7 @@ function register(req, res, next) {
 
     // User has authenticated so issue token 
     var token = jwt.sign(user, secret, { expiresIn: 60*60*24 });
+    console.log("this is the token, ", token);
 
     // Send back the token to the front-end to store
     return res.status(200).json({ 
@@ -37,6 +38,7 @@ function login(req, res, next) {
     if (!user.validPassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });
 
     var token = jwt.sign(user, secret, { expiresIn: 60*60*24 });
+    console.log("this is the token, ", token);
 
     return res.status(200).json({
       success: true,

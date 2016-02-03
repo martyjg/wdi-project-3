@@ -115,7 +115,7 @@ function setCurrentUser(token) {
 }
 
 function currentUser(){
-  return JSON.parse(localStorage.getItem('currentUser'));
+  return JSON.parse(localStorage.getItem('currentUser'))._doc;
 }
 
 function setToken(token) {
